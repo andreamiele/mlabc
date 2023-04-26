@@ -6,11 +6,11 @@ root: intro
 parts:
   - caption: Mathematics
     chapters:
-      - file: calculus
-      - file: probabilities
+      - file: mathematics/calculus
+      - file: mathematics/probabilities
   - caption: Resources
     chapters:
-      - file: datasets
-      - file: libraries
-      - file: papers
-      - file: other
+      - file: resources/datasets
+      - file: resources/libraries
+      - file: resources/papers
+      - file: resources/other
