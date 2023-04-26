@@ -20,7 +20,7 @@ Demonstrations and challenges leverage the essential tools of the Python ecosyst
 
 :::{note}
 I won't use Tensorflow in this guide as I'm way more comfortable using PyTorch.
-
+:::
 
 ![Tools used in this website](images/python_ecosystem.png)
 
