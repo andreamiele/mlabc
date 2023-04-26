@@ -48,8 +48,12 @@ sphinx:
       - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
     html_theme_options: { 
       "search_bar_text": "Search..",
-    "use_edit_page_button": True,
-    "navbar_end": ["navbar-icon-links"], }
+      "use_edit_page_button": True,
+      "navbar_end": ["navbar-icon-links"],
+      "logo": {
+        "text": "My awesome documentation",
+      }, 
+      }
     html_context: {
     # "github_url": "https://github.com", # or your GitHub Enterprise site
     "github_user": "andreamiele",
