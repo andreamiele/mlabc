@@ -26,7 +26,7 @@ I won't use Tensorflow in this guide as I'm way more comfortable using PyTorch.
 
 ## Usage
 
-All chapters are written as [Jupyter Notebooks](https://jupyter.org/) combining explanations and example code. When teaching, I use [reveal.js](https://revealjs.com/) and [RISE](https://rise.readthedocs.io/en/stable/) to showcase them as live presentations.
+All chapters are written as [Jupyter Notebooks](https://jupyter.org/) combining explanations and example code.
 
 The content of this site is designed to be browsed thematically rather than sequentially.
 
