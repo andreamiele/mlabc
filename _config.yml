@@ -51,7 +51,7 @@ sphinx:
       "use_edit_page_button": True,
       "navbar_end": ["navbar-icon-links"],
       "logo": {
-        "text": "My awesome documentation",
+        "text": "Machine Learning ABC",
       }, 
       }
     html_context: {
