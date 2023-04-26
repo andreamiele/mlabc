@@ -4,7 +4,6 @@
 title: Machine Learning ABC
 author: Andrea Miele
 email: andrea.miele.pro@gmail.com
-logo:
 copyright: "2023"
 
 # Force re-execution of notebooks on each build.
@@ -39,6 +38,7 @@ launch_buttons:
 
 sphinx:
   config:
+    html_logo: "_static/logo.png"
     html_sidebars:
       {
         "**": ["navbar-logo.html", "search-field.html", "sbt-sidebar-nav.html"],
