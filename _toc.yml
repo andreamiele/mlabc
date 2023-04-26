@@ -3,7 +3,14 @@
 
 format: jb-book
 root: intro
-chapters:
-  - file: markdown
-  - file: notebooks
-  - file: markdown-notebooks
+parts:
+  - caption: Mathematics
+    chapters:
+      - file: calculus
+      - file: probabilities
+  - caption: Resources
+    chapters:
+      - file: datasets
+      - file: libraries
+      - file: papers
+      - file: other
