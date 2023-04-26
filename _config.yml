@@ -1,14 +1,22 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: My sample book
-author: The Jupyter Book Community
-logo: logo.png
+title: Machine Learning ABC
+author: Andrea Miele
+email: andrea.miele.pro@gmail.com
+logo:
+copyright: "2023"
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: force
+  execute_notebooks: "off"
+
+html:
+  home_page_in_navbar: true
+  use_edit_page_button: true
+  use_repository_button: true
+  use_issues_button: true
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -21,12 +29,31 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/executablebooks/jupyter-book  # Online location of your book
-  path_to_book: docs  # Optional path to your book, relative to the repository root
-  branch: master  # Which branch of the repository should be used when creating links (optional)
+  url: https://github.com/executablebooks/jupyter-book # Online location of your book
+  path_to_book: docs # Optional path to your book, relative to the repository root
+  branch: master # Which branch of the repository should be used when creating links (optiona
 
-# Add GitHub buttons to your book
-# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
-html:
-  use_issues_button: true
-  use_repository_button: true
+launch_buttons:
+  binderhub_url: "https://mybinder.org"
+  colab_url: "https://colab.research.google.com"
+
+sphinx:
+  config:
+    html_sidebars:
+      {
+        "**": ["navbar-logo.html", "search-field.html", "sbt-sidebar-nav.html"],
+      }
+    html_js_files:
+      # Needed for Plotly
+      - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
+    html_theme_options: { 
+      "search_bar_text": "Search..",
+    "use_edit_page_button": True,
+    "navbar_end": ["navbar-icon-links"], }
+    html_context: {
+    # "github_url": "https://github.com", # or your GitHub Enterprise site
+    "github_user": "andreamiele",
+    "github_repo": "mlabc",
+    "github_version": "main",
+    "default_mode": "light",
+}
