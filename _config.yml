@@ -38,7 +38,7 @@ launch_buttons:
 
 sphinx:
   config:
-    html_logo: "_static/logo.png"
+    html_logo: "logo.png"
     html_sidebars:
       {
         "**": ["navbar-logo.html", "search-field.html", "sbt-sidebar-nav.html"],
