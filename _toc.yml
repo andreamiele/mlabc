@@ -6,7 +6,7 @@ root: intro
 parts:
   - caption: Mathematics
     chapters:
-      - file: mathematics/calculus
+      - file: mathematics/calculus.ipynb
       - file: mathematics/probabilities
   - caption: Resources
     chapters:
