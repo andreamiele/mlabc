@@ -8,6 +8,7 @@ parts:
     chapters:
       - file: mathematics/calculus
       - file: mathematics/probabilities
+      - file: mathematics/c
   - caption: Resources
     chapters:
       - file: resources/datasets
