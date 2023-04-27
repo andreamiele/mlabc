@@ -346,9 +346,16 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">Environment setup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear">Linear</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elu">ELU</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">ELU</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear">Linear</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function">Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derivative">Derivative</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elu">ELU</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">ELU</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relu">ReLU</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leakyrelu">LeakyReLU</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a></li>
@@ -385,29 +392,13 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python version: 3.10.5
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">platform</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Python version: </span><span class="si">{</span><span class="n">platform</span><span class="o">.</span><span class="n">python_version</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="k">assert</span> <span class="n">platform</span><span class="o">.</span><span class="n">python_version_tuple</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">matplotlib</span>
-
-<span class="ne">AssertionError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="linear">
 <h2>Linear<a class="headerlink" href="#linear" title="Permalink to this heading">#</a></h2>
 <p>A straight line function where activation is proportional to input ( which is the weighted sum from neuron ).</p>
-<p><strong>Function</strong></p>
+<section id="function">
+<h3>Function<a class="headerlink" href="#function" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[ 
 R(z,m) = \begin{Bmatrix} z*m \end{Bmatrix}
@@ -420,7 +411,9 @@ R(z,m) = \begin{Bmatrix} z*m \end{Bmatrix}
 </div>
 </div>
 </div>
-<p><strong>Derivative</strong></p>
+</section>
+<section id="derivative">
+<h3>Derivative<a class="headerlink" href="#derivative" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 R'(z,m) = \begin{Bmatrix} m \end{Bmatrix}
@@ -449,11 +442,13 @@ R'(z,m) = \begin{Bmatrix} m \end{Bmatrix}
 </ul>
 </div>
 </section>
+</section>
 <section id="elu">
 <h2>ELU<a class="headerlink" href="#elu" title="Permalink to this heading">#</a></h2>
 <p><strong>Exponential Linear Unit</strong> or its widely known name <strong>ELU</strong> is a function that tend to converge cost to zero faster and produce more accurate results. Different to other activation functions, ELU has a extra alpha constant which should be positive number.</p>
 <p>ELU is very similiar to RELU except negative inputs. They are both in identity function form for non-negative inputs. On the other hand, ELU becomes smooth slowly until its output equal to -α whereas RELU sharply smoothes.</p>
-<p><strong>Function</strong></p>
+<section id="id1">
+<h3>Function<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 R(z) = \begin{Bmatrix} z &amp; z &gt; 0 \\
@@ -468,8 +463,9 @@ R(z) = \begin{Bmatrix} z &amp; z &gt; 0 \\
 </div>
 </div>
 </section>
-<section id="id1">
-<h2>ELU<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="id2">
+<h2>ELU<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="relu">
 <h2>ReLU<a class="headerlink" href="#relu" title="Permalink to this heading">#</a></h2>
@@ -556,9 +552,16 @@ R(z) = \begin{Bmatrix} z &amp; z &gt; 0 \\
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">Environment setup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear">Linear</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elu">ELU</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">ELU</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear">Linear</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function">Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derivative">Derivative</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elu">ELU</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">ELU</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relu">ReLU</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leakyrelu">LeakyReLU</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a></li>
