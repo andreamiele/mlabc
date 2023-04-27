@@ -345,8 +345,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">Environment setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear">Linear</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elu">ELU</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">ELU</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relu">ReLU</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leakyrelu">LeakyReLU</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a></li>
@@ -365,7 +367,43 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="activation-functions">
 <h1>Activation Functions<a class="headerlink" href="#activation-functions" title="Permalink to this heading">#</a></h1>
-<p>todo</p>
+<section id="environment-setup">
+<h2>Environment setup<a class="headerlink" href="#environment-setup" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">platform</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Python version: </span><span class="si">{</span><span class="n">platform</span><span class="o">.</span><span class="n">python_version</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">platform</span><span class="o">.</span><span class="n">python_version_tuple</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">softmax</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python version: 3.10.5
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">platform</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Python version: </span><span class="si">{</span><span class="n">platform</span><span class="o">.</span><span class="n">python_version</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="k">assert</span> <span class="n">platform</span><span class="o">.</span><span class="n">python_version_tuple</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">matplotlib</span>
+
+<span class="ne">AssertionError</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="linear">
 <h2>Linear<a class="headerlink" href="#linear" title="Permalink to this heading">#</a></h2>
 <p>A straight line function where activation is proportional to input ( which is the weighted sum from neuron ).</p>
@@ -413,6 +451,25 @@ R'(z,m) = \begin{Bmatrix} m \end{Bmatrix}
 </section>
 <section id="elu">
 <h2>ELU<a class="headerlink" href="#elu" title="Permalink to this heading">#</a></h2>
+<p><strong>Exponential Linear Unit</strong> or its widely known name <strong>ELU</strong> is a function that tend to converge cost to zero faster and produce more accurate results. Different to other activation functions, ELU has a extra alpha constant which should be positive number.</p>
+<p>ELU is very similiar to RELU except negative inputs. They are both in identity function form for non-negative inputs. On the other hand, ELU becomes smooth slowly until its output equal to -α whereas RELU sharply smoothes.</p>
+<p><strong>Function</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+R(z) = \begin{Bmatrix} z &amp; z &gt; 0 \\
+α.( e^z – 1) &amp; z &lt;= 0 \end{Bmatrix}  
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">elu</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">alpha</span><span class="p">):</span>
+	<span class="k">return</span> <span class="n">z</span> <span class="k">if</span> <span class="n">z</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">alpha</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h2>ELU<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="relu">
 <h2>ReLU<a class="headerlink" href="#relu" title="Permalink to this heading">#</a></h2>
@@ -498,8 +555,10 @@ R'(z,m) = \begin{Bmatrix} m \end{Bmatrix}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">Environment setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear">Linear</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elu">ELU</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">ELU</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relu">ReLU</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leakyrelu">LeakyReLU</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a></li>
