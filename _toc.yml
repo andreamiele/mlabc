@@ -9,6 +9,9 @@ parts:
       - file: mathematics/calculus
       - file: mathematics/probabilities
       - file: mathematics/c
+  - caption: Neural Networks
+    chapters:
+      - file: NeuralNetworks/c
   - caption: Resources
     chapters:
       - file: resources/datasets
