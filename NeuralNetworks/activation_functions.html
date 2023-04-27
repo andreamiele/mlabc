@@ -366,24 +366,23 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Derivative</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gelu">GELU</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sigmoid">Sigmoid</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Function</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Derivative</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sigmoid">Sigmoid</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Function</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Derivative</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tanh">Tanh</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Function</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Derivative</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tanh">Tanh</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gelu">GELU</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Derivative</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
@@ -617,39 +616,11 @@ R'(z) = \begin{Bmatrix} 1 &amp; z&gt;0 \\
 </div>
 </section>
 </section>
-<section id="gelu">
-<h2>GELU<a class="headerlink" href="#gelu" title="Permalink to this heading">#</a></h2>
-<section id="id7">
-<h3>Function<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-Gelu(x) = x\Phi(x) \\
-\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\Phi(x)\)</span> is the cumulative distribution function of Gaussian distribution.</p>
-</section>
-<section id="id8">
-<h3>Derivative<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
-<div class="math notranslate nohighlight">
-\[\]</div>
-<div class="tip admonition">
-<p class="admonition-title">Pros</p>
-<ul class="simple">
-<li></li>
-</ul>
-</div>
-<div class="error admonition">
-<p class="admonition-title">Cons</p>
-<ul class="simple">
-<li></li>
-</ul>
-</div>
-</section>
-</section>
 <section id="sigmoid">
 <h2>Sigmoid<a class="headerlink" href="#sigmoid" title="Permalink to this heading">#</a></h2>
 <p>Sigmoid takes a real value as input and outputs another value between 0 and 1. It’s easy to work with and has all the nice properties of activation functions: it’s non-linear, continuously differentiable, monotonic, and has a fixed output range.</p>
-<section id="id9">
-<h3>Function<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<section id="id7">
+<h3>Function<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 S(z) = \frac{1} {1 + e^{-z}}
@@ -663,8 +634,8 @@ S(z) = \frac{1} {1 + e^{-z}}
 </div>
 </div>
 </section>
-<section id="id10">
-<h3>Derivative<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<section id="id8">
+<h3>Derivative<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 S'(z) = S(z) \cdot (1 - S(z))
@@ -694,15 +665,15 @@ S'(z) = S(z) \cdot (1 - S(z))
 <section id="softmax">
 <h2>Softmax<a class="headerlink" href="#softmax" title="Permalink to this heading">#</a></h2>
 <p>Softmax function calculates the probabilities distribution of the event over ‘n’ different events. In general way of saying, this function will calculate the probabilities of each target class over all possible target classes. Later the calculated probabilities will be helpful for determining the target class for the given inputs.</p>
-<section id="id11">
-<h3>Function<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<section id="id9">
+<h3>Function<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 \sigma(z_i) = \frac{e^{z_{i}}}{\sum_{j=1}^K e^{z_{j}}} \ \ \ for\ i=1,2,\dots,K
 \]</div>
 </section>
-<section id="id12">
-<h3>Derivative<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<section id="id10">
+<h3>Derivative<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\]</div>
 <div class="tip admonition">
@@ -721,8 +692,8 @@ S'(z) = S(z) \cdot (1 - S(z))
 </section>
 <section id="tanh">
 <h2>Tanh<a class="headerlink" href="#tanh" title="Permalink to this heading">#</a></h2>
-<section id="id13">
-<h3>Function<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<section id="id11">
+<h3>Function<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 tanh(z) = \frac{e^{z} - e^{-z}}{e^{z} + e^{-z}} = 2\sigma(2z) - 1
@@ -736,8 +707,8 @@ tanh(z) = \frac{e^{z} - e^{-z}}{e^{z} + e^{-z}} = 2\sigma(2z) - 1
 </div>
 </div>
 </section>
-<section id="id14">
-<h3>Derivative<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<section id="id12">
+<h3>Derivative<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 tanh'(z) = 1 - tanh(z)^{2} 
@@ -760,6 +731,53 @@ tanh'(z) = 1 - tanh(z)^{2}
 <p class="admonition-title">Cons</p>
 <ul class="simple">
 <li></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="gelu">
+<h2>GELU<a class="headerlink" href="#gelu" title="Permalink to this heading">#</a></h2>
+<p>The <strong>Gaussian Error Linear Unit</strong>, or <strong>GELU</strong>, nonlinearity weights inputs by their percentile, rather than gates inputs by their sign as in ReLUs (<span class="math notranslate nohighlight">\(x1_{x&gt;0}\)</span>). Consequently the GELU can be thought of as a smoother ReLU.</p>
+<p>GELUs are used in GPT-3, BERT, and most other Transformers.</p>
+<section id="id13">
+<h3>Function<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Gelu(x) = xP(X&lt;=x) = x\Phi(x)  \\
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Phi(x)\)</span> is the cumulative distribution function of Gaussian distribution and if <span class="math notranslate nohighlight">\(X \sim \mathcal{N}(0,1)\)</span> .</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+
+<span class="k">def</span> <span class="nf">gelu</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">gelu_approx</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">.5</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">1</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">tanh</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mf">0.044715</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">)))</span>
+                      
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:6: SyntaxWarning: &#39;int&#39; object is not callable; perhaps you missed a comma?
+&lt;&gt;:6: SyntaxWarning: &#39;int&#39; object is not callable; perhaps you missed a comma?
+C:\Users\MIELEA1\AppData\Local\Temp\ipykernel_24200\3591342165.py:6: SyntaxWarning: &#39;int&#39; object is not callable; perhaps you missed a comma?
+  return .5 * x * 1(1 + tanh(np.sqrt(2/np.pi)*(x+0.044715 * x**3)))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Pros</p>
+<ul class="simple">
+<li><p>It appears to be cutting-edge in NLP, particularly for Transformer models that is, it outperforms the competition.</p></li>
+<li><p>Avoids the problem of vanishing gradients</p></li>
+</ul>
+</div>
+<div class="error admonition">
+<p class="admonition-title">Cons</p>
+<ul class="simple">
+<li><p>Although it was launched in 2016, it is still relatively new in practical application.</p></li>
 </ul>
 </div>
 </section>
@@ -875,24 +893,23 @@ tanh'(z) = 1 - tanh(z)^{2}
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Derivative</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gelu">GELU</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sigmoid">Sigmoid</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Function</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Derivative</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sigmoid">Sigmoid</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Function</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Derivative</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tanh">Tanh</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Function</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Derivative</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tanh">Tanh</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gelu">GELU</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Derivative</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
