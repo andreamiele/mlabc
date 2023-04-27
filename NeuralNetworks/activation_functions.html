@@ -571,6 +571,14 @@ R'(z) = \begin{Bmatrix} 1 &amp; z&gt;0 \\
 R(z) = \begin{Bmatrix} z &amp; z &gt; 0 \\
 \alpha z &amp; z &lt;= 0 \end{Bmatrix}
 \end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">leakyrelu</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+	<span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">z</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="id6">
 <h3>Derivative<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
@@ -579,6 +587,14 @@ R(z) = \begin{Bmatrix} z &amp; z &gt; 0 \\
 R'(z) = \begin{Bmatrix} 1 &amp; z&gt;0 \\
 \alpha &amp; z&lt;0 \end{Bmatrix}
 \end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">leakyrelu_prime</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+	<span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">z</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">alpha</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="tip admonition">
 <p class="admonition-title">Pros</p>
 <ul class="simple">
@@ -602,6 +618,14 @@ R'(z) = \begin{Bmatrix} 1 &amp; z&gt;0 \\
 \[
 S(z) = \frac{1} {1 + e^{-z}}
 \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+  <span class="k">return</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="id8">
 <h3>Derivative<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
@@ -609,6 +633,14 @@ S(z) = \frac{1} {1 + e^{-z}}
 \[
 S'(z) = S(z) \cdot (1 - S(z))
 \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sigmoid_prime</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="tip admonition">
 <p class="admonition-title">Pros</p>
 <ul class="simple">
@@ -659,6 +691,14 @@ S'(z) = S(z) \cdot (1 - S(z))
 \[
 tanh(z) = \frac{e^{z} - e^{-z}}{e^{z} + e^{-z}} = 2\sigma(2z) - 1
 \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tanh</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+	<span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="id12">
 <h3>Derivative<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
@@ -666,6 +706,14 @@ tanh(z) = \frac{e^{z} - e^{-z}}{e^{z} + e^{-z}} = 2\sigma(2z) - 1
 \[
 tanh'(z) = 1 - tanh(z)^{2} 
 \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tanh_prime</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+	<span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">tanh</span><span class="p">(</span><span class="n">z</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="tip admonition">
 <p class="admonition-title">Pros</p>
 <ul class="simple">
