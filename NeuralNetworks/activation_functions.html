@@ -366,19 +366,24 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Derivative</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sigmoid">Sigmoid</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gelu">GELU</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Function</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Derivative</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sigmoid">Sigmoid</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Function</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Derivative</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tanh">Tanh</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Function</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Derivative</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tanh">Tanh</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Derivative</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
@@ -612,11 +617,39 @@ R'(z) = \begin{Bmatrix} 1 &amp; z&gt;0 \\
 </div>
 </section>
 </section>
+<section id="gelu">
+<h2>GELU<a class="headerlink" href="#gelu" title="Permalink to this heading">#</a></h2>
+<section id="id7">
+<h3>Function<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Gelu(x) = x\Phi(x) \\
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Phi(x)\)</span> is the cumulative distribution function of Gaussian distribution.</p>
+</section>
+<section id="id8">
+<h3>Derivative<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<div class="tip admonition">
+<p class="admonition-title">Pros</p>
+<ul class="simple">
+<li></li>
+</ul>
+</div>
+<div class="error admonition">
+<p class="admonition-title">Cons</p>
+<ul class="simple">
+<li></li>
+</ul>
+</div>
+</section>
+</section>
 <section id="sigmoid">
 <h2>Sigmoid<a class="headerlink" href="#sigmoid" title="Permalink to this heading">#</a></h2>
 <p>Sigmoid takes a real value as input and outputs another value between 0 and 1. It’s easy to work with and has all the nice properties of activation functions: it’s non-linear, continuously differentiable, monotonic, and has a fixed output range.</p>
-<section id="id7">
-<h3>Function<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<section id="id9">
+<h3>Function<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 S(z) = \frac{1} {1 + e^{-z}}
@@ -630,8 +663,8 @@ S(z) = \frac{1} {1 + e^{-z}}
 </div>
 </div>
 </section>
-<section id="id8">
-<h3>Derivative<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<section id="id10">
+<h3>Derivative<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 S'(z) = S(z) \cdot (1 - S(z))
@@ -661,15 +694,15 @@ S'(z) = S(z) \cdot (1 - S(z))
 <section id="softmax">
 <h2>Softmax<a class="headerlink" href="#softmax" title="Permalink to this heading">#</a></h2>
 <p>Softmax function calculates the probabilities distribution of the event over ‘n’ different events. In general way of saying, this function will calculate the probabilities of each target class over all possible target classes. Later the calculated probabilities will be helpful for determining the target class for the given inputs.</p>
-<section id="id9">
-<h3>Function<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<section id="id11">
+<h3>Function<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 \sigma(z_i) = \frac{e^{z_{i}}}{\sum_{j=1}^K e^{z_{j}}} \ \ \ for\ i=1,2,\dots,K
 \]</div>
 </section>
-<section id="id10">
-<h3>Derivative<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<section id="id12">
+<h3>Derivative<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\]</div>
 <div class="tip admonition">
@@ -688,8 +721,8 @@ S'(z) = S(z) \cdot (1 - S(z))
 </section>
 <section id="tanh">
 <h2>Tanh<a class="headerlink" href="#tanh" title="Permalink to this heading">#</a></h2>
-<section id="id11">
-<h3>Function<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<section id="id13">
+<h3>Function<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 tanh(z) = \frac{e^{z} - e^{-z}}{e^{z} + e^{-z}} = 2\sigma(2z) - 1
@@ -703,8 +736,8 @@ tanh(z) = \frac{e^{z} - e^{-z}}{e^{z} + e^{-z}} = 2\sigma(2z) - 1
 </div>
 </div>
 </section>
-<section id="id12">
-<h3>Derivative<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<section id="id14">
+<h3>Derivative<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 tanh'(z) = 1 - tanh(z)^{2} 
@@ -842,19 +875,24 @@ tanh'(z) = 1 - tanh(z)^{2}
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Derivative</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sigmoid">Sigmoid</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gelu">GELU</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Function</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Derivative</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sigmoid">Sigmoid</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Function</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Derivative</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tanh">Tanh</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Function</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Derivative</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tanh">Tanh</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Derivative</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
