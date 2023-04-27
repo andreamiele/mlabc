@@ -64,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'NeuralNetworks/c';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'NeuralNetworks/activation_functions';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Datasets" href="../resources/datasets.html" />
@@ -227,7 +227,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/andreamiele/mlabc/edit/main/NeuralNetworks/c.ipynb" target="_blank"
+<a href="https://github.com/andreamiele/mlabc/edit/main/NeuralNetworks/activation_functions.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button"
    title="Suggest edit"
    data-bs-placement="bottom" data-bs-toggle="tooltip"
@@ -253,7 +253,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/NeuralNetworks/c.ipynb" target="_blank"
+      <li><a href="../_sources/NeuralNetworks/activation_functions.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -353,9 +353,15 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elu">ELU</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Derivative</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relu">ReLU</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relu">ReLU</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Derivative</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">ReLU</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leakyrelu">LeakyReLU</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sigmoid">Sigmoid</a></li>
@@ -462,9 +468,85 @@ R(z) = \begin{Bmatrix} z &amp; z &gt; 0 \\
 </div>
 </div>
 </section>
+<section id="id2">
+<h3>Derivative<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+R'(z) = \begin{Bmatrix} 1 &amp; z&gt;0 \\
+α.e^z &amp; z&lt;0 \end{Bmatrix}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">elu_prime</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">alpha</span><span class="p">):</span>
+	<span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">z</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">alpha</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Pros</p>
+<ul class="simple">
+<li></li>
+</ul>
+</div>
+<div class="error admonition">
+<p class="admonition-title">Cons</p>
+<ul class="simple">
+<li></li>
+</ul>
+</div>
+</section>
 </section>
 <section id="relu">
 <h2>ReLU<a class="headerlink" href="#relu" title="Permalink to this heading">#</a></h2>
+<p>A recent invention which stands for Rectified Linear Units. The formula is deceptively simple: <span class="math notranslate nohighlight">\(max(0,z)\)</span>. Despite its name and appearance, it’s not linear and provides the same benefits as Sigmoid (i.e. the ability to learn nonlinear functions), but with better performance.</p>
+<section id="id3">
+<h3>Function<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+R(z) = \begin{Bmatrix} z &amp; z &gt; 0 \\
+0 &amp; z &lt;= 0 \end{Bmatrix} 
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">relu</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+  <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id4">
+<h3>Derivative<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+R'(z) = \begin{Bmatrix} 1 &amp; z&gt;0 \\
+0 &amp; z&lt;0 \end{Bmatrix}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">relu_prime</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+  <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">z</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Pros</p>
+<ul class="simple">
+<li></li>
+</ul>
+</div>
+<div class="error admonition">
+<p class="admonition-title">Cons</p>
+<ul class="simple">
+<li></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="id5">
+<h2>ReLU<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="leakyrelu">
 <h2>LeakyReLU<a class="headerlink" href="#leakyrelu" title="Permalink to this heading">#</a></h2>
@@ -555,9 +637,15 @@ R(z) = \begin{Bmatrix} z &amp; z &gt; 0 \\
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elu">ELU</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Derivative</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relu">ReLU</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relu">ReLU</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Derivative</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">ReLU</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leakyrelu">LeakyReLU</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sigmoid">Sigmoid</a></li>
