@@ -361,11 +361,26 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Derivative</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">ReLU</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leakyrelu">LeakyReLU</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sigmoid">Sigmoid</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tanh">Tanh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leakyrelu">LeakyReLU</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Derivative</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sigmoid">Sigmoid</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Derivative</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Derivative</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tanh">Tanh</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Derivative</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -499,7 +514,8 @@ R'(z) = \begin{Bmatrix} 1 &amp; z&gt;0 \\
 </section>
 <section id="relu">
 <h2>ReLU<a class="headerlink" href="#relu" title="Permalink to this heading">#</a></h2>
-<p>A recent invention which stands for Rectified Linear Units. The formula is deceptively simple: <span class="math notranslate nohighlight">\(max(0,z)\)</span>. Despite its name and appearance, it’s not linear and provides the same benefits as Sigmoid (i.e. the ability to learn nonlinear functions), but with better performance.</p>
+<p>A recent invention which stands for Rectified Linear Units. The formula is deceptively simple: <span class="math notranslate nohighlight">\(max(0,z)\)</span>.
+Despite its name and appearance, it’s not linear and provides the same benefits as Sigmoid (i.e. the ability to learn nonlinear functions), but with better performance.</p>
 <section id="id3">
 <h3>Function<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
@@ -545,20 +561,122 @@ R'(z) = \begin{Bmatrix} 1 &amp; z&gt;0 \\
 </div>
 </section>
 </section>
-<section id="id5">
-<h2>ReLU<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
-</section>
 <section id="leakyrelu">
 <h2>LeakyReLU<a class="headerlink" href="#leakyrelu" title="Permalink to this heading">#</a></h2>
+<p>LeakyRelu is a variant of ReLU. Instead of being 0 when :math:<code class="docutils literal notranslate"><span class="pre">z</span> <span class="pre">&lt;</span> <span class="pre">0</span></code>, a leaky ReLU allows a small, non-zero, constant gradient :math:<code class="docutils literal notranslate"><span class="pre">\alpha</span></code> (Normally, :math:<code class="docutils literal notranslate"><span class="pre">\alpha</span> <span class="pre">=</span> <span class="pre">0.01</span></code>). However, the consistency of the benefit across tasks is presently unclear. [1]_</p>
+<section id="id5">
+<h3>Function<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+R(z) = \begin{Bmatrix} z &amp; z &gt; 0 \\
+\alpha z &amp; z &lt;= 0 \end{Bmatrix}
+\end{split}\]</div>
 </section>
-<section id="softmax">
-<h2>Softmax<a class="headerlink" href="#softmax" title="Permalink to this heading">#</a></h2>
+<section id="id6">
+<h3>Derivative<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+R'(z) = \begin{Bmatrix} 1 &amp; z&gt;0 \\
+\alpha &amp; z&lt;0 \end{Bmatrix}
+\end{split}\]</div>
+<div class="tip admonition">
+<p class="admonition-title">Pros</p>
+<ul class="simple">
+<li></li>
+</ul>
+</div>
+<div class="error admonition">
+<p class="admonition-title">Cons</p>
+<ul class="simple">
+<li></li>
+</ul>
+</div>
+</section>
 </section>
 <section id="sigmoid">
 <h2>Sigmoid<a class="headerlink" href="#sigmoid" title="Permalink to this heading">#</a></h2>
+<p>Sigmoid takes a real value as input and outputs another value between 0 and 1. It’s easy to work with and has all the nice properties of activation functions: it’s non-linear, continuously differentiable, monotonic, and has a fixed output range.</p>
+<section id="id7">
+<h3>Function<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+S(z) = \frac{1} {1 + e^{-z}}
+\]</div>
+</section>
+<section id="id8">
+<h3>Derivative<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+S'(z) = S(z) \cdot (1 - S(z))
+\]</div>
+<div class="tip admonition">
+<p class="admonition-title">Pros</p>
+<ul class="simple">
+<li></li>
+</ul>
+</div>
+<div class="error admonition">
+<p class="admonition-title">Cons</p>
+<ul class="simple">
+<li></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="softmax">
+<h2>Softmax<a class="headerlink" href="#softmax" title="Permalink to this heading">#</a></h2>
+<p>Softmax function calculates the probabilities distribution of the event over ‘n’ different events. In general way of saying, this function will calculate the probabilities of each target class over all possible target classes. Later the calculated probabilities will be helpful for determining the target class for the given inputs.</p>
+<section id="id9">
+<h3>Function<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\]</div>
+</section>
+<section id="id10">
+<h3>Derivative<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<div class="tip admonition">
+<p class="admonition-title">Pros</p>
+<ul class="simple">
+<li></li>
+</ul>
+</div>
+<div class="error admonition">
+<p class="admonition-title">Cons</p>
+<ul class="simple">
+<li></li>
+</ul>
+</div>
+</section>
 </section>
 <section id="tanh">
 <h2>Tanh<a class="headerlink" href="#tanh" title="Permalink to this heading">#</a></h2>
+<section id="id11">
+<h3>Function<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+tanh(z) = \frac{e^{z} - e^{-z}}{e^{z} + e^{-z}}
+\]</div>
+</section>
+<section id="id12">
+<h3>Derivative<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+tanh'(z) = 1 - tanh(z)^{2} 
+\]</div>
+<div class="tip admonition">
+<p class="admonition-title">Pros</p>
+<ul class="simple">
+<li></li>
+</ul>
+</div>
+<div class="error admonition">
+<p class="admonition-title">Cons</p>
+<ul class="simple">
+<li></li>
+</ul>
+</div>
+</section>
 </section>
 </section>
 
@@ -645,11 +763,26 @@ R'(z) = \begin{Bmatrix} 1 &amp; z&gt;0 \\
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Derivative</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">ReLU</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leakyrelu">LeakyReLU</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sigmoid">Sigmoid</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tanh">Tanh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leakyrelu">LeakyReLU</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Derivative</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sigmoid">Sigmoid</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Derivative</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Derivative</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tanh">Tanh</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Derivative</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
