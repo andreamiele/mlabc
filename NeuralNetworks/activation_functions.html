@@ -752,17 +752,7 @@ Gelu(x) = xP(X&lt;=x) = x\Phi(x)  \\
 
 <span class="k">def</span> <span class="nf">gelu</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">gelu_approx</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="mf">.5</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">1</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">tanh</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mf">0.044715</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">)))</span>
                       
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:6: SyntaxWarning: &#39;int&#39; object is not callable; perhaps you missed a comma?
-&lt;&gt;:6: SyntaxWarning: &#39;int&#39; object is not callable; perhaps you missed a comma?
-C:\Users\MIELEA1\AppData\Local\Temp\ipykernel_24200\3591342165.py:6: SyntaxWarning: &#39;int&#39; object is not callable; perhaps you missed a comma?
-  return .5 * x * 1(1 + tanh(np.sqrt(2/np.pi)*(x+0.044715 * x**3)))
 </pre></div>
 </div>
 </div>
