@@ -483,7 +483,8 @@ You can download Anaconda from the official website: <a class="reference externa
 </section>
 <section id="section-3-tensors-and-common-operations">
 <h2>Section 3: Tensors and Common Operations<a class="headerlink" href="#section-3-tensors-and-common-operations" title="Permalink to this heading">#</a></h2>
-<p>Tensors are the basic building blocks of most machine learning models. A tensor is a multidimensional array that can represent a scalar, vector, matrix, or higher-dimensional data. In this section, we’ll cover the basics of tensors and common tensor operations using NumPy.</p>
+<p>Tensors are multi-dimensional arrays commonly used in machine learning.</p>
+<p>The number of dimensions of a tensor is known as its <strong>rank</strong>, and each dimension is often referred to as an <strong>axis</strong>. The <strong>shape</strong> of a tensor describes the number of values along each axis, and the number of entries along a specific axis is also referred to as <strong>dimension</strong>. For instance, it’s important to note that a 3-dimensional vector is not the same as a 3-dimensional tensor.</p>
 <section id="introduction-to-tensors">
 <h3>Introduction to Tensors<a class="headerlink" href="#introduction-to-tensors" title="Permalink to this heading">#</a></h3>
 <p>A tensor is a generalization of a vector or matrix to higher dimensions. In NumPy, we can represent tensors using the ndarray class. The number of dimensions of a tensor is called its rank, and the size of each dimension is called its shape.</p>
@@ -498,8 +499,6 @@ You can download Anaconda from the official website: <a class="reference externa
 <section id="basic-tensor-operations">
 <h3>Basic Tensor Operations<a class="headerlink" href="#basic-tensor-operations" title="Permalink to this heading">#</a></h3>
 <p>We can perform various operations on tensors, including addition, subtraction, multiplication, division, and element-wise operations. In NumPy, these operations are performed using the same syntax as for scalar operations.</p>
-<p>Tensors are multi-dimensional arrays commonly used in machine learning.</p>
-<p>The number of dimensions of a tensor is known as its <strong>rank</strong>, and each dimension is often referred to as an <strong>axis</strong>. The <strong>shape</strong> of a tensor describes the number of values along each axis, and the number of entries along a specific axis is also referred to as <strong>dimension</strong>. For instance, it’s important to note that a 3-dimensional vector is not the same as a 3-dimensional tensor.</p>
 <p>In Python, <span class="xref myst">NumPy</span> provides support for tensors in the form of ndarray objects, which can be manipulated using a comprehensive set of operations, including creating, sorting, selecting, linear algebra, and statistical operations. <span class="xref myst">PyTorch</span> offers a NumPy-like API for manipulating tensors, which can also be located on a GPU for faster computations. <span class="xref myst">TensorFlow</span> also supports tensors, but its API is generally considered more cumbersome.</p>
 <p>Here’s some example code for basic tensor operations:</p>
 <div class="cell docutils container">
