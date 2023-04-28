@@ -384,6 +384,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Function</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#swish">Swish</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Function</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
 </ul>
             </nav>
@@ -656,13 +660,21 @@ S'(z) = S(z) \cdot (1 - S(z))
 <div class="tip admonition">
 <p class="admonition-title">Pros</p>
 <ul class="simple">
-<li></li>
+<li><p>It is nonlinear in nature. Combinations of this function are also nonlinear!</p></li>
+<li><p>It will give an analog activation unlike step function.</p></li>
+<li><p>It has a smooth gradient too.</p></li>
+<li><p>It’s good for a classifier.</p></li>
+<li><p>The output of the activation function is always going to be in range (0,1) compared to (-inf, inf) of linear function. So we have our activations bound in a range. Nice, it won’t blow up the activations then.</p></li>
 </ul>
 </div>
 <div class="error admonition">
 <p class="admonition-title">Cons</p>
 <ul class="simple">
-<li></li>
+<li><p>Towards either end of the sigmoid function, the Y values tend to respond very less to changes in X.</p></li>
+<li><p>It gives rise to a problem of “vanishing gradients”.</p></li>
+<li><p>Its output isn’t zero centered. It makes the gradient updates go too far in different directions. 0 &lt; output &lt; 1, and it makes optimization harder.</p></li>
+<li><p>Sigmoids saturate and kill gradients.</p></li>
+<li><p>The network refuses to learn further or is drastically slow ( depending on use case and until gradient /computation gets hit by floating point value limits ).</p></li>
 </ul>
 </div>
 </section>
@@ -684,7 +696,8 @@ S'(z) = S(z) \cdot (1 - S(z))
 <div class="tip admonition">
 <p class="admonition-title">Pros</p>
 <ul class="simple">
-<li></li>
+<li><p>Able to handle multiple classes only one class in other activation functions—normalizes the outputs for each class between 0 and 1, and divides by their sum, giving the probability of the input value being in a specific class.</p></li>
+<li><p>Useful for output neurons—typically Softmax is used only for the output layer, for neural networks that need to classify inputs into multiple categories.</p></li>
 </ul>
 </div>
 <div class="error admonition">
@@ -729,13 +742,13 @@ tanh'(z) = 1 - tanh(z)^{2}
 <div class="tip admonition">
 <p class="admonition-title">Pros</p>
 <ul class="simple">
-<li></li>
+<li><p>The gradient is stronger for tanh than sigmoid ( derivatives are steeper)</p></li>
 </ul>
 </div>
 <div class="error admonition">
 <p class="admonition-title">Cons</p>
 <ul class="simple">
-<li></li>
+<li><p>Tanh also has the vanishing gradient problem</p></li>
 </ul>
 </div>
 </section>
@@ -773,6 +786,39 @@ Gelu(x) = xP(X&lt;=x) = x\Phi(x)  \\
 <p class="admonition-title">Cons</p>
 <ul class="simple">
 <li><p>Although it was launched in 2016, it is still relatively new in practical application.</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="swish">
+<h2>Swish<a class="headerlink" href="#swish" title="Permalink to this heading">#</a></h2>
+<p>Swish is a new, self-gated activation function discovered by researchers at Google. According to their paper, it performs better than ReLU with a similar level of computational efficiency. In experiments on ImageNet with identical models running ReLU and Swish, the new function achieved top -1 classification accuracy 0.6-0.9% higher.</p>
+<p>Read more <a class="reference external" href="https://blog.paperspace.com/swish-activation-function/">here</a></p>
+<section id="id14">
+<h3>Function<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+S(x) = x sigmoid(\beta x)
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">swish</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">beta</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">z</span><span class="o">*</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">beta</span><span class="o">*</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Pros</p>
+<ul class="simple">
+<li><p>Can deal with Vanishing Gradient problem.</p></li>
+<li><p>The output is a workaround between RELU and Sigmoid function which helps in normalising the output.</p></li>
+</ul>
+</div>
+<div class="error admonition">
+<p class="admonition-title">Cons</p>
+<ul class="simple">
+<li><p>Computationally expensive function (as of Sigmoid).</p></li>
 </ul>
 </div>
 </section>
@@ -906,6 +952,10 @@ Gelu(x) = xP(X&lt;=x) = x\Phi(x)  \\
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gelu">GELU</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#swish">Swish</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Function</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
