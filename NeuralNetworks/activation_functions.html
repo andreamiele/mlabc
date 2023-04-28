@@ -507,13 +507,15 @@ R'(z) = \begin{Bmatrix} 1 &amp; z&gt;0 \\
 <div class="tip admonition">
 <p class="admonition-title">Pros</p>
 <ul class="simple">
-<li></li>
+<li><p>ELU becomes smooth slowly until its output equal to -α whereas RELU sharply smoothes.</p></li>
+<li><p>ELU is a strong alternative to ReLU.</p></li>
+<li><p>Unlike to ReLU, ELU can produce negative outputs.</p></li>
 </ul>
 </div>
 <div class="error admonition">
 <p class="admonition-title">Cons</p>
 <ul class="simple">
-<li></li>
+<li><p>For x &gt; 0, it can blow up the activation with the output range of [0, inf].</p></li>
 </ul>
 </div>
 </section>
