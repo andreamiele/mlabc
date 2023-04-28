@@ -372,20 +372,19 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Derivative</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tanh">Tanh</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Derivative</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Derivative</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gelu">GELU</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Function</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#swish">Swish</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Function</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
@@ -688,11 +687,6 @@ S'(z) = S(z) \cdot (1 - S(z))
 \[
 \sigma(z_i) = \frac{e^{z_{i}}}{\sum_{j=1}^K e^{z_{j}}} \ \ \ for\ i=1,2,\dots,K
 \]</div>
-</section>
-<section id="id10">
-<h3>Derivative<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
-<div class="math notranslate nohighlight">
-\[\]</div>
 <div class="tip admonition">
 <p class="admonition-title">Pros</p>
 <ul class="simple">
@@ -700,18 +694,12 @@ S'(z) = S(z) \cdot (1 - S(z))
 <li><p>Useful for output neurons—typically Softmax is used only for the output layer, for neural networks that need to classify inputs into multiple categories.</p></li>
 </ul>
 </div>
-<div class="error admonition">
-<p class="admonition-title">Cons</p>
-<ul class="simple">
-<li></li>
-</ul>
-</div>
 </section>
 </section>
 <section id="tanh">
 <h2>Tanh<a class="headerlink" href="#tanh" title="Permalink to this heading">#</a></h2>
-<section id="id11">
-<h3>Function<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<section id="id10">
+<h3>Function<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 tanh(z) = \frac{e^{z} - e^{-z}}{e^{z} + e^{-z}} = 2\sigma(2z) - 1
@@ -725,8 +713,8 @@ tanh(z) = \frac{e^{z} - e^{-z}}{e^{z} + e^{-z}} = 2\sigma(2z) - 1
 </div>
 </div>
 </section>
-<section id="id12">
-<h3>Derivative<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<section id="id11">
+<h3>Derivative<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 tanh'(z) = 1 - tanh(z)^{2} 
@@ -757,8 +745,8 @@ tanh'(z) = 1 - tanh(z)^{2}
 <h2>GELU<a class="headerlink" href="#gelu" title="Permalink to this heading">#</a></h2>
 <p>The <strong>Gaussian Error Linear Unit</strong>, or <strong>GELU</strong>, nonlinearity weights inputs by their percentile, rather than gates inputs by their sign as in ReLUs (<span class="math notranslate nohighlight">\(x1_{x&gt;0}\)</span>). Consequently the GELU can be thought of as a smoother ReLU.</p>
 <p>GELUs are used in GPT-3, BERT, and most other Transformers.</p>
-<section id="id13">
-<h3>Function<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<section id="id12">
+<h3>Function<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 Gelu(x) = xP(X&lt;=x) = x\Phi(x)  \\
@@ -794,8 +782,8 @@ Gelu(x) = xP(X&lt;=x) = x\Phi(x)  \\
 <h2>Swish<a class="headerlink" href="#swish" title="Permalink to this heading">#</a></h2>
 <p>Swish is a new, self-gated activation function discovered by researchers at Google. According to their paper, it performs better than ReLU with a similar level of computational efficiency. In experiments on ImageNet with identical models running ReLU and Swish, the new function achieved top -1 classification accuracy 0.6-0.9% higher.</p>
 <p>Read more <a class="reference external" href="https://blog.paperspace.com/swish-activation-function/">here</a></p>
-<section id="id14">
-<h3>Function<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<section id="id13">
+<h3>Function<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 S(x) = x sigmoid(\beta x)
@@ -942,20 +930,19 @@ S(x) = x sigmoid(\beta x)
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Derivative</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tanh">Tanh</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Derivative</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Derivative</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gelu">GELU</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Function</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#swish">Swish</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Function</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
