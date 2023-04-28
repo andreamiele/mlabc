@@ -6,20 +6,20 @@ root: intro
 parts:
   - caption: Mathematics
     chapters:
-      - file: mathematics/calculus
-      - file: mathematics/probabilities
+    - file: mathematics/calculus
+    - file: mathematics/probabilities
   - caption: Neural Networks
     chapters:
-      - file: NeuralNetworks/activation_functions
+    - file: NeuralNetworks/activation_functions
   - caption: Tools
     chapters:
-      - file: Tools/tools
+    - file: Tools/tools
   - caption: Reference
     chapters:
-      - file: Ref/ref
+    - file: Ref/ref
   - caption: Resources
     chapters:
-      - file: resources/datasets
-      - file: resources/libraries
-      - file: resources/papers
-      - file: resources/other
+    - file: resources/datasets
+    - file: resources/libraries
+    - file: resources/papers
+    - file: resources/other
