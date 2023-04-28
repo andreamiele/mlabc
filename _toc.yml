@@ -7,6 +7,7 @@ parts:
   - caption: Fundamentals
     chapters:
       - file: Fundamentals/f
+      - file: Fundamentals/handling_data
   - caption: Introduction to Machine Learning
     chapters:
       - file: Introduction/i
