@@ -62,6 +62,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Fundamentals/handling_data';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -353,7 +355,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#launch-jupyter-notebook">Launch Jupyter Notebook</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-problem-formulation">Section 2: Problem Formulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-problem-formulation">Section 2: Problem Formulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-problem">Define the problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-appropriate-metrics-for-evaluation">Choose appropriate metrics for evaluation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decide-on-input-and-output-formats">Decide on Input and Output formats</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-3-tensors-and-common-operations">Section 3: Tensors and Common Operations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-4-data-collection-and-preprocessing">Section 4: Data Collection and Preprocessing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-5-feature-extraction-and-transformation">Section 5: Feature Extraction and Transformation</a></li>
@@ -403,6 +410,61 @@ You can download Anaconda from the official website: <a class="reference externa
 </section>
 <section id="section-2-problem-formulation">
 <h2>Section 2: Problem Formulation<a class="headerlink" href="#section-2-problem-formulation" title="Permalink to this heading">#</a></h2>
+<p>Before we can start working with data, we need to have a clear understanding of the problem we’re trying to solve and the requirements for the data and model. In this section, we’ll cover the key aspects of problem formulation, including defining the problem, choosing appropriate metrics for evaluation, and deciding on the input and output formats for the model.</p>
+<section id="define-the-problem">
+<h3>Define the problem<a class="headerlink" href="#define-the-problem" title="Permalink to this heading">#</a></h3>
+<p>The first step in problem formulation is to define the problem we’re trying to solve. This includes identifying the type of problem (classification, regression, clustering, etc.), the scope of the problem (number of classes, size of dataset, etc.), and any specific constraints or requirements.</p>
+<p>For example, if we’re working on a classification problem to identify handwritten digits, we need to decide on the number of classes (10 digits) and the size of the dataset (e.g., 60,000 training images and 10,000 test images). We also need to consider any specific constraints, such as the need for real-time classification or the availability of computing resources.</p>
+</section>
+<section id="choose-appropriate-metrics-for-evaluation">
+<h3>Choose appropriate metrics for evaluation<a class="headerlink" href="#choose-appropriate-metrics-for-evaluation" title="Permalink to this heading">#</a></h3>
+<p>Once we’ve defined the problem, we need to choose appropriate metrics for evaluating the performance of our model. The choice of metrics depends on the type of problem and the goals of the project.</p>
+<p>For classification problems, common evaluation metrics include accuracy, precision, recall, F1-score, and area under the ROC curve. For regression problems, common metrics include mean squared error, mean absolute error, and R-squared.</p>
+<p>It’s important to choose metrics that align with the goals of the project. For example, if the goal is to minimize false positives in a medical diagnosis system, we should focus on metrics that measure precision rather than recall.</p>
+</section>
+<section id="decide-on-input-and-output-formats">
+<h3>Decide on Input and Output formats<a class="headerlink" href="#decide-on-input-and-output-formats" title="Permalink to this heading">#</a></h3>
+<p>Finally, we need to decide on the input and output formats for our model. This includes deciding on the features to use as inputs, as well as the format of the output (e.g., a single scalar value for regression, a probability distribution over classes for classification).</p>
+<p>In some cases, we may need to preprocess the data to extract relevant features or transform the data into a suitable format. For example, in image classification, we might use pixel values as input features and one-hot encoding to represent the output classes</p>
+<p>When working with machine learning models, we often use a design matrix to represent the input data and a target vector to represent the output labels.</p>
+<p>The design matrix is a matrix where each row represents an input sample and each column represents a feature or attribute. The target vector is a vector where each element represents the corresponding label or target for the corresponding input sample.</p>
+<p>We can represent the design matrix as X, where X has dimensions (n_samples, n_features), and the target vector as y, where y has dimensions (n_samples, 1).</p>
+<p>The input features are denoted as <span class="math notranslate nohighlight">\(x_{i,j}\)</span>, where i is the index of the sample and j is the index of the feature. The corresponding target or label for the ith sample is denoted as <span class="math notranslate nohighlight">\(y_i\)</span>.</p>
+<p>Here are the equations for the inputs, design matrix and target vector:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix} \end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{X} = \begin{bmatrix} x_{11} &amp; x_{12} &amp; \dots &amp; x_{1n} \\ x_{21} &amp; x_{22} &amp; \dots &amp; x_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ x_{m1} &amp; x_{m2} &amp; \dots &amp; x_{mn} \end{bmatrix} \end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{y} = \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_m \end{bmatrix} \end{split}\]</div>
+<p>In Python, we can represent the design matrix and target vector as NumPy arrays:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Define the design matrix X and target vector y</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Print the dimensions of X and y</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;X shape:&#39;</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y shape:&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This would output:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="n">shape</span><span class="p">:</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">y</span> <span class="n">shape</span><span class="p">:</span> <span class="p">(</span><span class="mi">3</span><span class="p">,)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, X has dimensions (3, 3), indicating that there are 3 samples and 3 features, and y has dimensions (3,), indicating that there are 3 targets.</p>
+<p>In summary, the design matrix and target vector are essential components of machine learning models and are used to represent the input and output data, respectively. The design matrix is a matrix where each row represents an input sample and each column represents a feature, and the target vector is a vector where each element represents the corresponding label or target for the corresponding input sample.</p>
+</section>
 </section>
 <section id="section-3-tensors-and-common-operations">
 <h2>Section 3: Tensors and Common Operations<a class="headerlink" href="#section-3-tensors-and-common-operations" title="Permalink to this heading">#</a></h2>
@@ -492,7 +554,12 @@ You can download Anaconda from the official website: <a class="reference externa
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#launch-jupyter-notebook">Launch Jupyter Notebook</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-problem-formulation">Section 2: Problem Formulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-problem-formulation">Section 2: Problem Formulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-problem">Define the problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-appropriate-metrics-for-evaluation">Choose appropriate metrics for evaluation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decide-on-input-and-output-formats">Decide on Input and Output formats</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-3-tensors-and-common-operations">Section 3: Tensors and Common Operations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-4-data-collection-and-preprocessing">Section 4: Data Collection and Preprocessing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-5-feature-extraction-and-transformation">Section 5: Feature Extraction and Transformation</a></li>
