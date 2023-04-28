@@ -378,8 +378,17 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-5-feature-extraction-and-transformation">Section 5: Feature Extraction and Transformation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-6-handling-missing-and-noisy-data">Section 6: Handling Missing and Noisy Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-5-feature-extraction-and-transformation">Section 5: Feature Extraction and Transformation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-selection">Feature Selection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-engineering">Feature Engineering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensionality-reduction">Dimensionality Reduction</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-6-handling-missing-and-noisy-data">Section 6: Handling Missing and Noisy Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-missing-data">Handling Missing Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-noisy-data">Handling Noisy Data</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -667,9 +676,125 @@ You can download Anaconda from the official website: <a class="reference externa
 </section>
 <section id="section-5-feature-extraction-and-transformation">
 <h2>Section 5: Feature Extraction and Transformation<a class="headerlink" href="#section-5-feature-extraction-and-transformation" title="Permalink to this heading">#</a></h2>
+<p>Feature extraction and transformation are important steps in machine learning that involve selecting and transforming input features to improve the performance of machine learning models. In this section, we’ll cover the basics of feature extraction and transformation, including feature selection, feature engineering, and dimensionality reduction.</p>
+<section id="feature-selection">
+<h3>Feature Selection<a class="headerlink" href="#feature-selection" title="Permalink to this heading">#</a></h3>
+<p>Feature selection is the process of selecting a subset of relevant features from a larger set of input features. This can help to reduce the complexity of the model and improve its performance by removing irrelevant or redundant features.</p>
+<p>There are various methods for feature selection, including univariate feature selection, recursive feature elimination, and feature importance ranking.</p>
+<p>Here’s an example code for feature selection using univariate feature selection:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">SelectKBest</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">chi2</span>
+
+<span class="c1"># Load the iris dataset</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
+
+<span class="c1"># Select the top 2 most important features using chi-squared test</span>
+<span class="n">selector</span> <span class="o">=</span> <span class="n">SelectKBest</span><span class="p">(</span><span class="n">chi2</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">X_new</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="feature-engineering">
+<h3>Feature Engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this heading">#</a></h3>
+<p>Feature engineering is the process of creating new features from the existing input features to improve the performance of machine learning models. This can involve combining, transforming, or encoding the input features.</p>
+<p>Common methods of feature engineering include polynomial features, interaction features, and categorical encoding.</p>
+<p>Here’s an example code for feature engineering using polynomial features:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+
+<span class="c1"># Load the dataset</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create polynomial features</span>
+<span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">data_poly</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s1">&#39;feature1&#39;</span><span class="p">,</span> <span class="s1">&#39;feature2&#39;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dimensionality-reduction">
+<h3>Dimensionality Reduction<a class="headerlink" href="#dimensionality-reduction" title="Permalink to this heading">#</a></h3>
+<p>Dimensionality reduction is the process of reducing the number of input features while preserving as much of the original information as possible. This can help to reduce the complexity of the model and improve its performance by removing noise and redundancy in the input features.</p>
+<p>Common methods of dimensionality reduction include principal component analysis (PCA) and t-distributed stochastic neighbor embedding (t-SNE).</p>
+<p>Here’s an example code for dimensionality reduction using PCA:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="c1"># Load the dataset</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Apply PCA</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">data_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s1">&#39;feature1&#39;</span><span class="p">,</span> <span class="s1">&#39;feature2&#39;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="section-6-handling-missing-and-noisy-data">
 <h2>Section 6: Handling Missing and Noisy Data<a class="headerlink" href="#section-6-handling-missing-and-noisy-data" title="Permalink to this heading">#</a></h2>
+<p>One of the challenges in machine learning is dealing with missing and noisy data. Missing data can occur when some of the input features have not been recorded or are not available, while noisy data can occur when there are errors or inconsistencies in the input data.</p>
+<section id="handling-missing-data">
+<h3>Handling Missing Data<a class="headerlink" href="#handling-missing-data" title="Permalink to this heading">#</a></h3>
+<p>There are several strategies for handling missing data, including:</p>
+<ul class="simple">
+<li><p>Deleting the rows or columns with missing data.</p></li>
+<li><p>Imputing the missing data using various techniques, such as mean imputation, median imputation, and regression imputation.</p></li>
+<li><p>Using algorithms that are robust to missing data, such as decision trees and random forests.</p></li>
+</ul>
+<p>Here’s an example code for mean imputation using the pandas library:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Load a dataset with missing data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Perform mean imputation on the missing values</span>
+<span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="handling-noisy-data">
+<h3>Handling Noisy Data<a class="headerlink" href="#handling-noisy-data" title="Permalink to this heading">#</a></h3>
+<p>There are several strategies for handling noisy data, including:</p>
+<p>Removing outliers using various techniques, such as z-score method and interquartile range (IQR) method.
+Smoothing the data using techniques such as moving average and Gaussian smoothing.
+Using algorithms that are robust to noisy data, such as decision trees and random forests.
+Here’s an example code for outlier removal using the z-score method using the numpy library:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Load a dataset with noisy data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
+
+<span class="c1"># Compute the z-scores of the data</span>
+<span class="n">z_scores</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Identify outliers based on a threshold</span>
+<span class="n">outliers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">z_scores</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Remove the outliers</span>
+<span class="n">data_clean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">outliers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -770,8 +895,17 @@ You can download Anaconda from the official website: <a class="reference externa
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-5-feature-extraction-and-transformation">Section 5: Feature Extraction and Transformation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-6-handling-missing-and-noisy-data">Section 6: Handling Missing and Noisy Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-5-feature-extraction-and-transformation">Section 5: Feature Extraction and Transformation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-selection">Feature Selection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-engineering">Feature Engineering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensionality-reduction">Dimensionality Reduction</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-6-handling-missing-and-noisy-data">Section 6: Handling Missing and Noisy Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-missing-data">Handling Missing Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-noisy-data">Handling Noisy Data</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
