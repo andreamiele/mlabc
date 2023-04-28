@@ -4,6 +4,26 @@
 format: jb-book
 root: intro
 parts:
+  - caption: Fundamentals
+    chapters:
+  - caption: Introduction to Machine Learning
+    chapters:
+  - caption: Supervised Learning
+    chapters:
+  - caption: Unsupervised Learning
+    chapters:
+  - caption: Computer Vision
+    chapters:
+  - caption: Natural Language Processing (NLP)
+    chapters:
+  - caption: Transfer Learning and AutoML
+    chapters:
+  - caption: Reinforcement Learning
+    chapters:
+  - caption: Special Topics in Machine Learning
+    chapters:
+  - caption: Reinforcement Learning
+    chapters:
   - caption: Mathematics
     chapters:
       - file: mathematics/calculus
@@ -11,6 +31,11 @@ parts:
   - caption: Neural Networks
     chapters:
       - file: NeuralNetworks/activation_functions
+  - caption: Tools
+    chapters:
+  - caption: Reference
+    chapters:
+
   - caption: Resources
     chapters:
       - file: resources/datasets
