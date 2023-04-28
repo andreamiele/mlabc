@@ -361,7 +361,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decide-on-input-and-output-formats">Decide on Input and Output formats</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-3-tensors-and-common-operations">Section 3: Tensors and Common Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-3-tensors-and-common-operations">Section 3: Tensors and Common Operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-tensors">Introduction to Tensors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-tensor-operations">Basic Tensor Operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting-and-reshaping-tensors">Broadcasting and Reshaping Tensors</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-4-data-collection-and-preprocessing">Section 4: Data Collection and Preprocessing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-5-feature-extraction-and-transformation">Section 5: Feature Extraction and Transformation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-6-handling-missing-and-noisy-data">Section 6: Handling Missing and Noisy Data</a></li>
@@ -468,6 +473,84 @@ You can download Anaconda from the official website: <a class="reference externa
 </section>
 <section id="section-3-tensors-and-common-operations">
 <h2>Section 3: Tensors and Common Operations<a class="headerlink" href="#section-3-tensors-and-common-operations" title="Permalink to this heading">#</a></h2>
+<p>Tensors are the basic building blocks of most machine learning models. A tensor is a multidimensional array that can represent a scalar, vector, matrix, or higher-dimensional data. In this section, we’ll cover the basics of tensors and common tensor operations using NumPy.</p>
+<section id="introduction-to-tensors">
+<h3>Introduction to Tensors<a class="headerlink" href="#introduction-to-tensors" title="Permalink to this heading">#</a></h3>
+<p>A tensor is a generalization of a vector or matrix to higher dimensions. In NumPy, we can represent tensors using the ndarray class. The number of dimensions of a tensor is called its rank, and the size of each dimension is called its shape.</p>
+<p>Here are some examples of tensors:</p>
+<ul class="simple">
+<li><p>Scalar: A tensor of rank 0, representing a single value.</p></li>
+<li><p>Vector: A tensor of rank 1, representing a sequence of values.</p></li>
+<li><p>Matrix: A tensor of rank 2, representing a table of values.</p></li>
+<li><p>Higher-dimensional tensor: A tensor of rank &gt; 2, representing a multidimensional array of values.</p></li>
+</ul>
+</section>
+<section id="basic-tensor-operations">
+<h3>Basic Tensor Operations<a class="headerlink" href="#basic-tensor-operations" title="Permalink to this heading">#</a></h3>
+<p>We can perform various operations on tensors, including addition, subtraction, multiplication, division, and element-wise operations. In NumPy, these operations are performed using the same syntax as for scalar operations.</p>
+<p>Here’s some example code for basic tensor operations:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Create a scalar tensor</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Create a vector tensor</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+
+<span class="c1"># Create a matrix tensor</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+
+<span class="c1"># Addition</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Output: 7</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Output: [2 3 4]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]))</span>  <span class="c1"># Output: [[2 3] [4 5]]</span>
+
+<span class="c1"># Subtraction</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Output: 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Output: [0 1 2]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]))</span>  <span class="c1"># Output: [[0 1] [2 3]]</span>
+
+<span class="c1"># Multiplication</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Output: 10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Output: [2 4 6]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]))</span>  <span class="c1"># Output: [[1 2] [3 4]]</span>
+
+<span class="c1"># Division</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Output: 2.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Output: [0.5 1.  1.5]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]))</span>  <span class="c1"># Output: [[0.5 1. ] [1.5 2. ]]</span>
+
+<span class="c1"># Element-wise operations</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>  <span class="c1"># Output: [[0.84147098 0.90929743] [0.14112001 -0.7568025 ]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>  <span class="c1"># Output: [[ 2.71828183  7.3890561 ] [20.08553692 54.59815003]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="broadcasting-and-reshaping-tensors">
+<h3>Broadcasting and Reshaping Tensors<a class="headerlink" href="#broadcasting-and-reshaping-tensors" title="Permalink to this heading">#</a></h3>
+<p>Broadcasting and reshaping are common operations used to manipulate tensors. Broadcasting allows us to perform operations on tensors with different shapes, while reshaping allows us to change the shape of a tensor without changing its data.</p>
+<p>Here’s some example code for broadcasting and reshaping:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Broadcasting</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># Output: [[2 3 4] [3 4 5] [4 5 6]]</span>
+
+<span class="c1"># Reshaping</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># Output: [[1 2 3] [4 5 6]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In summary, tensors are the basic building blocks of most machine learning models, and we can perform various operations on tensors, including addition, subtraction, multiplication, division, and element-wise operations. Broadcasting and reshaping are common operations used to manipulate tensors, allowing us to perform operations on tensors with different shapes and change the shape of a tensor without changing its data.</p>
+</section>
 </section>
 <section id="section-4-data-collection-and-preprocessing">
 <h2>Section 4: Data Collection and Preprocessing<a class="headerlink" href="#section-4-data-collection-and-preprocessing" title="Permalink to this heading">#</a></h2>
@@ -560,7 +643,12 @@ You can download Anaconda from the official website: <a class="reference externa
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decide-on-input-and-output-formats">Decide on Input and Output formats</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-3-tensors-and-common-operations">Section 3: Tensors and Common Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-3-tensors-and-common-operations">Section 3: Tensors and Common Operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-tensors">Introduction to Tensors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-tensor-operations">Basic Tensor Operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting-and-reshaping-tensors">Broadcasting and Reshaping Tensors</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-4-data-collection-and-preprocessing">Section 4: Data Collection and Preprocessing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-5-feature-extraction-and-transformation">Section 5: Feature Extraction and Transformation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-6-handling-missing-and-noisy-data">Section 6: Handling Missing and Noisy Data</a></li>
