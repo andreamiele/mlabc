@@ -367,7 +367,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting-and-reshaping-tensors">Broadcasting and Reshaping Tensors</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-4-data-collection-and-preprocessing">Section 4: Data Collection and Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-4-data-collection-and-preprocessing">Section 4: Data Collection and Preprocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-sources">Data Sources</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-5-feature-extraction-and-transformation">Section 5: Feature Extraction and Transformation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-6-handling-missing-and-noisy-data">Section 6: Handling Missing and Noisy Data</a></li>
 </ul>
@@ -488,6 +491,9 @@ You can download Anaconda from the official website: <a class="reference externa
 <section id="basic-tensor-operations">
 <h3>Basic Tensor Operations<a class="headerlink" href="#basic-tensor-operations" title="Permalink to this heading">#</a></h3>
 <p>We can perform various operations on tensors, including addition, subtraction, multiplication, division, and element-wise operations. In NumPy, these operations are performed using the same syntax as for scalar operations.</p>
+<p>Tensors are multi-dimensional arrays commonly used in machine learning.</p>
+<p>The number of dimensions of a tensor is known as its <strong>rank</strong>, and each dimension is often referred to as an <strong>axis</strong>. The <strong>shape</strong> of a tensor describes the number of values along each axis, and the number of entries along a specific axis is also referred to as <strong>dimension</strong>. For instance, it’s important to note that a 3-dimensional vector is not the same as a 3-dimensional tensor.</p>
+<p>In Python, <span class="xref myst">NumPy</span> provides support for tensors in the form of ndarray objects, which can be manipulated using a comprehensive set of operations, including creating, sorting, selecting, linear algebra, and statistical operations. <span class="xref myst">PyTorch</span> offers a NumPy-like API for manipulating tensors, which can also be located on a GPU for faster computations. <span class="xref myst">TensorFlow</span> also supports tensors, but its API is generally considered more cumbersome.</p>
 <p>Here’s some example code for basic tensor operations:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -554,6 +560,12 @@ You can download Anaconda from the official website: <a class="reference externa
 </section>
 <section id="section-4-data-collection-and-preprocessing">
 <h2>Section 4: Data Collection and Preprocessing<a class="headerlink" href="#section-4-data-collection-and-preprocessing" title="Permalink to this heading">#</a></h2>
+<p>Data collection and preprocessing are critical steps in machine learning. In this section, we’ll cover the basics of data collection and preprocessing, including data sources, data cleaning, and feature scaling.</p>
+<section id="data-sources">
+<h3>Data Sources<a class="headerlink" href="#data-sources" title="Permalink to this heading">#</a></h3>
+<p>There are various sources of data for machine learning, including public datasets, private datasets, and synthetic datasets. Public datasets, such as those provided by Kaggle and UCI Machine Learning Repository, are freely available and commonly used for benchmarking and research. Private datasets, such as those used in industry, may require permissions or licenses to access. Synthetic datasets are generated using models or simulations and can be useful for generating large amounts of data for training models.</p>
+<p>When selecting a dataset, it’s important to consider factors such as data quality, data size, and data relevance to the problem at hand.</p>
+</section>
 </section>
 <section id="section-5-feature-extraction-and-transformation">
 <h2>Section 5: Feature Extraction and Transformation<a class="headerlink" href="#section-5-feature-extraction-and-transformation" title="Permalink to this heading">#</a></h2>
@@ -649,7 +661,10 @@ You can download Anaconda from the official website: <a class="reference externa
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting-and-reshaping-tensors">Broadcasting and Reshaping Tensors</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-4-data-collection-and-preprocessing">Section 4: Data Collection and Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-4-data-collection-and-preprocessing">Section 4: Data Collection and Preprocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-sources">Data Sources</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-5-feature-extraction-and-transformation">Section 5: Feature Extraction and Transformation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-6-handling-missing-and-noisy-data">Section 6: Handling Missing and Noisy Data</a></li>
 </ul>
