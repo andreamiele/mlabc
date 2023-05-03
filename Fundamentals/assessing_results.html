@@ -352,6 +352,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-environment-setup">Section 1: Environment Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-evaluation-metrics">Section 2: Evaluation Metrics</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-metrics">2.1 Classification Metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-metrics">2.2 Regression Metrics</a></li>
 </ul>
 </li>
 </ul>
@@ -421,6 +422,40 @@ F1\text{-}score = 2\times\frac{Precision\times Recall}{Precision+Recall}
 </div>
 </div>
 </div>
+<p>In addition to these metrics, we may also need to compute other classification metrics such as area under the curve, confusion matrix, or ROC curve. We can use Scikit-learn to compute these metrics as well.</p>
+</section>
+<section id="regression-metrics">
+<h3>2.2 Regression Metrics<a class="headerlink" href="#regression-metrics" title="Permalink to this heading">#</a></h3>
+<p>Regression is a supervised learning task in which the goal is to predict a continuous output variable given one or more input variables. Examples include house price prediction, stock price prediction, and weather forecasting.</p>
+<p>The most commonly used regression metrics are mean squared error, mean absolute error, and R-squared. Let’s define these metrics mathematically:</p>
+<ul class="simple">
+<li><p>Mean squared error (MSE) measures the average squared difference between the predicted and actual values. It is defined as:
+$<span class="math notranslate nohighlight">\(
+MSE = \frac{1}{n}\sum_{i=1}^n(y_i - \hat{y}_i)^2
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>y_i<span class="math notranslate nohighlight">\( is the actual value, \)</span>\hat{y}_i<span class="math notranslate nohighlight">\( is the predicted value, and \)</span>n$ is the number of data points.</p></li>
+<li><p>Mean absolute error (MAE) measures the average absolute difference between the predicted and actual values. It is defined as:
+$<span class="math notranslate nohighlight">\(
+MAE= \frac{1}{n}\sum_{i=1}^n|y_i - \hat{y}_i|
+\)</span>$</p></li>
+<li><p>R-squared (R²) measures the proportion of variance in the output variable that can be explained by the input variables. It is defined as:
+$<span class="math notranslate nohighlight">\(
+R^2 = 1 - \frac{\sum_{i=1}^n(y_i - \hat{y}_i)^2}{\sum_{i=1}^n(y_i - \bar{y})^2}
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\bar{y}$ is the mean of the output variable.</p></li>
+</ul>
+<p>We can use Python libraries such as Scikit-learn to compute these evaluation metrics for our regression models. Here’s an example code for computing mean squared error for a regression model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+<span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean squared error:&quot;</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In addition to these metrics, we may also need to compute other regression metrics such as mean absolute percentage error or root mean squared logarithmic error. We can use Scikit-learn to compute these metrics as well.</p>
 </section>
 </section>
 </section>
@@ -495,6 +530,7 @@ F1\text{-}score = 2\times\frac{Precision\times Recall}{Precision+Recall}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-environment-setup">Section 1: Environment Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-evaluation-metrics">Section 2: Evaluation Metrics</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-metrics">2.1 Classification Metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-metrics">2.2 Regression Metrics</a></li>
 </ul>
 </li>
 </ul>
