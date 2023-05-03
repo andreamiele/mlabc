@@ -350,7 +350,10 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-environment-setup">Section 1: Environment Setup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-evaluation-metrics">Section 2: Evaluation Metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-evaluation-metrics">Section 2: Evaluation Metrics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-metrics">2.1 Classification Metrics</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -383,23 +386,24 @@ Here’s an example code for installing Scikit-learn and importing it in Python:
 <section id="section-2-evaluation-metrics">
 <h2>Section 2: Evaluation Metrics<a class="headerlink" href="#section-2-evaluation-metrics" title="Permalink to this heading">#</a></h2>
 <p>In machine learning, evaluation metrics are used to assess the performance of a model on a given dataset. Evaluation metrics can be broadly classified into two categories: classification metrics and regression metrics.</p>
-<p>2.1 Classification Metrics</p>
+<section id="classification-metrics">
+<h3>2.1 Classification Metrics<a class="headerlink" href="#classification-metrics" title="Permalink to this heading">#</a></h3>
 <p>Classification is a supervised learning task in which the goal is to assign input data points to one of several discrete categories. Examples include spam detection, image classification, and sentiment analysis.</p>
 <p>The most commonly used classification metrics are accuracy, precision, recall, and F1-score. Let’s define these metrics mathematically:</p>
-<p>Accuracy measures the proportion of correct predictions among all predictions. It is defined as:
+<p><strong>Accuracy</strong> measures the proportion of correct predictions among all predictions. It is defined as:
 $<span class="math notranslate nohighlight">\(
 Accuracy = \frac{TP+TN}{TP+TN+FP+FN}
 \)</span>$
 where TP is the number of true positives, TN is the number of true negatives, FP is the number of false positives, and FN is the number of false negatives.</p>
-<p>Precision measures the proportion of true positives among all positive predictions. It is defined as:
+<p><strong>Precision</strong> measures the proportion of true positives among all positive predictions. It is defined as:
 $<span class="math notranslate nohighlight">\(
 Precision = \frac{TP}{TP+FP}
 \)</span>$</p>
-<p>Recall measures the proportion of true positives among all actual positives. It is defined as:
+<p><strong>Recall</strong> measures the proportion of true positives among all actual positives. It is defined as:
 $<span class="math notranslate nohighlight">\(
 Recall = \frac{TP}{TP+FN}
 \)</span>$</p>
-<p>F1-score is a weighted average of precision and recall, which balances the trade-off between them. It is defined as:
+<p><strong>F1-score</strong> is a weighted average of precision and recall, which balances the trade-off between them. It is defined as:
 $<span class="math notranslate nohighlight">\(
 F1\text{-}score = 2\times\frac{Precision\times Recall}{Precision+Recall}
 \)</span>$</p>
@@ -417,18 +421,7 @@ F1\text{-}score = 2\times\frac{Precision\times Recall}{Precision+Recall}
 </div>
 </div>
 </div>
-<p>In addition to these metrics, we may also need to compute regression metrics such as mean squared error or classification metrics such as area under the curve. We can use Scikit-learn to compute these metrics as well. Here’s an example code for computing mean squared error for a regression model:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
-<span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean squared error:&quot;</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>By using these evaluation metrics, we can measure the performance of our machine learning models and compare them against each other.</p>
+</section>
 </section>
 </section>
 
@@ -500,7 +493,10 @@ F1\text{-}score = 2\times\frac{Precision\times Recall}{Precision+Recall}
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-environment-setup">Section 1: Environment Setup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-evaluation-metrics">Section 2: Evaluation Metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-evaluation-metrics">Section 2: Evaluation Metrics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-metrics">2.1 Classification Metrics</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
