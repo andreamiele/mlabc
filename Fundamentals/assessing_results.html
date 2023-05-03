@@ -392,22 +392,14 @@ Here’s an example code for installing Scikit-learn and importing it in Python:
 <p>Classification is a supervised learning task in which the goal is to assign input data points to one of several discrete categories. Examples include spam detection, image classification, and sentiment analysis.</p>
 <p>The most commonly used classification metrics are accuracy, precision, recall, and F1-score. Let’s define these metrics mathematically:</p>
 <p><strong>Accuracy</strong> measures the proportion of correct predictions among all predictions. It is defined as:
-$<span class="math notranslate nohighlight">\(
-Accuracy = \frac{TP+TN}{TP+TN+FP+FN}
-\)</span>$
+$<span class="math notranslate nohighlight">\(Accuracy = \frac{TP+TN}{TP+TN+FP+FN}\)</span>$
 where TP is the number of true positives, TN is the number of true negatives, FP is the number of false positives, and FN is the number of false negatives.</p>
 <p><strong>Precision</strong> measures the proportion of true positives among all positive predictions. It is defined as:
-$<span class="math notranslate nohighlight">\(
-Precision = \frac{TP}{TP+FP}
-\)</span>$</p>
+$<span class="math notranslate nohighlight">\(Precision = \frac{TP}{TP+FP}\)</span>$</p>
 <p><strong>Recall</strong> measures the proportion of true positives among all actual positives. It is defined as:
-$<span class="math notranslate nohighlight">\(
-Recall = \frac{TP}{TP+FN}
-\)</span>$</p>
+$<span class="math notranslate nohighlight">\(Recall = \frac{TP}{TP+FN}\)</span>$</p>
 <p><strong>F1-score</strong> is a weighted average of precision and recall, which balances the trade-off between them. It is defined as:
-$<span class="math notranslate nohighlight">\(
-F1\text{-}score = 2\times\frac{Precision\times Recall}{Precision+Recall}
-\)</span>$</p>
+$<span class="math notranslate nohighlight">\(F1\text{-}score = 2\times\frac{Precision\times Recall}{Precision+Recall}\)</span>$</p>
 <p>We can use Python libraries such as Scikit-learn to compute these evaluation metrics for our classification models. Here’s an example code for computing accuracy, precision, recall, and F1-score for a binary classification model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -430,18 +422,12 @@ F1\text{-}score = 2\times\frac{Precision\times Recall}{Precision+Recall}
 <p>The most commonly used regression metrics are mean squared error, mean absolute error, and R-squared. Let’s define these metrics mathematically:</p>
 <ul class="simple">
 <li><p>Mean squared error (MSE) measures the average squared difference between the predicted and actual values. It is defined as:
-$<span class="math notranslate nohighlight">\(
-MSE = \frac{1}{n}\sum_{i=1}^n(y_i - \hat{y}_i)^2
-\)</span><span class="math notranslate nohighlight">\(
+$<span class="math notranslate nohighlight">\(MSE = \frac{1}{n}\sum_{i=1}^n(y_i - \hat{y}_i)^2\)</span><span class="math notranslate nohighlight">\(
 where \)</span>y_i<span class="math notranslate nohighlight">\( is the actual value, \)</span>\hat{y}_i<span class="math notranslate nohighlight">\( is the predicted value, and \)</span>n$ is the number of data points.</p></li>
 <li><p>Mean absolute error (MAE) measures the average absolute difference between the predicted and actual values. It is defined as:
-$<span class="math notranslate nohighlight">\(
-MAE= \frac{1}{n}\sum_{i=1}^n|y_i - \hat{y}_i|
-\)</span>$</p></li>
+$<span class="math notranslate nohighlight">\(MAE= \frac{1}{n}\sum_{i=1}^n|y_i - \hat{y}_i|\)</span>$</p></li>
 <li><p>R-squared (R²) measures the proportion of variance in the output variable that can be explained by the input variables. It is defined as:
-$<span class="math notranslate nohighlight">\(
-R^2 = 1 - \frac{\sum_{i=1}^n(y_i - \hat{y}_i)^2}{\sum_{i=1}^n(y_i - \bar{y})^2}
-\)</span><span class="math notranslate nohighlight">\(
+$<span class="math notranslate nohighlight">\(R^2 = 1 - \frac{\sum_{i=1}^n(y_i - \hat{y}_i)^2}{\sum_{i=1}^n(y_i - \bar{y})^2}\)</span><span class="math notranslate nohighlight">\(
 where \)</span>\bar{y}$ is the mean of the output variable.</p></li>
 </ul>
 <p>We can use Python libraries such as Scikit-learn to compute these evaluation metrics for our regression models. Here’s an example code for computing mean squared error for a regression model:</p>
