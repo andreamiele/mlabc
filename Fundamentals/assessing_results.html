@@ -498,6 +498,11 @@ where \)</span>x_1, x_2, …, x_n<span class="math notranslate nohighlight">\( a
 $<span class="math notranslate nohighlight">\( \)</span>$</p>
 <p>where <span class="math notranslate nohighlight">\(x\)</span> is the input features, <span class="math notranslate nohighlight">\(\theta\)</span> is the model parameters, <span class="math notranslate nohighlight">\(h_\theta(x)\)</span> is the predicted output, and <span class="math notranslate nohighlight">\(e\)</span> is the base of the natural logarithm.</p>
 <p>In neural networks, the hypothesis function is a composition of multiple linear and nonlinear transformations, which can be represented by a series of layers. Each layer applies a linear transformation to the input features, followed by a nonlinear activation function such as a sigmoid, ReLU, or tanh.</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>where <span class="math notranslate nohighlight">\(x\)</span> is the input features, <span class="math notranslate nohighlight">\(W_1, W_2, W_3\)</span> are the weight matrices, <span class="math notranslate nohighlight">\(b_1, b_2, b_3\)</span> are the bias vectors, and <span class="math notranslate nohighlight">\(f_1, f_2, f_3\)</span> are the activation functions.</p>
+<p>The choice of activation function also depends on the specific problem and data at hand. In general, sigmoid and tanh functions are preferred for binary classification problems, while ReLU functions are preferred for regression and multiclass classification problems.</p>
+<p>Here’s an example code for implementing a logistic regression model with a sigmoid hypothesis function in Python:</p>
 </section>
 </section>
 
