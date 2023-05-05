@@ -355,6 +355,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-metrics">2.2 Regression Metrics</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-3-model-parameters">Section 3: Model Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-4-hypothesis-function">Section 4: Hypothesis Function</a></li>
 </ul>
             </nav>
         </div>
@@ -444,6 +446,57 @@ where \)</span>\bar{y}$ is the mean of the output variable.</p></li>
 <p>In addition to these metrics, we may also need to compute other regression metrics such as mean absolute percentage error or root mean squared logarithmic error. We can use Scikit-learn to compute these metrics as well.</p>
 </section>
 </section>
+<section id="section-3-model-parameters">
+<h2>Section 3: Model Parameters<a class="headerlink" href="#section-3-model-parameters" title="Permalink to this heading">#</a></h2>
+<p>In supervised machine learning, the goal is to learn a function that maps input features to output labels, based on a set of training examples. This function is typically represented by a model, which has a set of parameters that can be learned from the training data. The model parameters define the shape and behavior of the model, and can be optimized to minimize the error between the predicted output and the actual output.</p>
+<p>For example, in linear regression, the model is represented by a linear equation that maps input features to a continuous output value. The model parameters are the coefficients of the equation, which can be learned from the training data using an optimization algorithm such as gradient descent.
+$<span class="math notranslate nohighlight">\(y = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + ... + \theta_n x_n\)</span><span class="math notranslate nohighlight">\(
+where \)</span>y<span class="math notranslate nohighlight">\( is the predicted output, \)</span>x_1, x_2, …, x_n<span class="math notranslate nohighlight">\( are the input features, \)</span>\theta_0, \theta_1, \theta_2, …, \theta_n<span class="math notranslate nohighlight">\( are the model parameters, and \)</span>n$ is the number of input features.</p>
+<p>In logistic regression, the model is represented by a sigmoid function that maps input features to a binary output value. The model parameters are the coefficients of the sigmoid function, which can be learned from the training data using an optimization algorithm such as gradient descent.
+$<span class="math notranslate nohighlight">\(y = \frac{1}{1 + e^{-(\theta_0 + \theta_1 x_1 + \theta_2 x_2 + ... + \theta_n x_n)}}\)</span>$</p>
+<p>where <span class="math notranslate nohighlight">\(y\)</span> is the predicted output, <span class="math notranslate nohighlight">\(x_1, x_2, ..., x_n\)</span> are the input features, <span class="math notranslate nohighlight">\(\theta_0, \theta_1, \theta_2, ..., \theta_n\)</span> are the model parameters, and <span class="math notranslate nohighlight">\(n\)</span> is the number of input features.</p>
+<p>The choice of model and model parameters depends on the specific problem and data at hand. In general, simpler models with fewer parameters are preferred over complex models with many parameters, to avoid overfitting and improve generalization performance. However, in some cases, more complex models may be necessary to capture the underlying complexity of the data.</p>
+<p>In practice, the model parameters are typically initialized with random values, and then optimized using an optimization algorithm such as gradient descent. The optimization algorithm iteratively updates the model parameters in the direction of the negative gradient of the loss function, which measures the error between the predicted output and the actual output.</p>
+<p>Here’s an example code for training a linear regression model using gradient descent in Python:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">class</span> <span class="nc">LinearRegression</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">=</span> <span class="n">lr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_epochs</span> <span class="o">=</span> <span class="n">num_epochs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="kc">None</span>
+    
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_epochs</span><span class="p">):</span>
+            <span class="n">y_pred</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">y_pred</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">grad</span> <span class="o">=</span> <span class="mi">2</span><span class="o">/</span><span class="n">m</span> <span class="o">*</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">*</span> <span class="n">grad</span>
+            <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Epoch&quot;</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="s2">&quot;Loss:&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This code defines a class for linear regression models, with methods for fitting the model to data and making predictions. The <code class="docutils literal notranslate"><span class="pre">fit</span></code> method initializes the model parameters with random values, and then iteratively</p>
+</section>
+<section id="section-4-hypothesis-function">
+<h2>Section 4: Hypothesis Function<a class="headerlink" href="#section-4-hypothesis-function" title="Permalink to this heading">#</a></h2>
+<p>The hypothesis function is a mathematical function that maps input features to output predictions. In supervised learning, the goal is to learn the hypothesis function that best maps the input features to the output labels. The hypothesis function is typically represented by a model, which has a set of parameters that can be learned from data. The parameters are initialized with random values, and the goal is to find the optimal values that minimize the error between the predicted output and the actual output.</p>
+<p>The choice of hypothesis function depends on the specific problem and data at hand. In general, linear models are a popular choice for regression problems, while logistic models are a popular choice for classification problems. However, there are many other types of hypothesis functions that can be used, such as polynomial models, decision trees, neural networks, and support vector machines.</p>
+<p>For example, in linear regression, the hypothesis function is a linear equation that maps input features to a continuous output value:
+$<span class="math notranslate nohighlight">\( \)</span><span class="math notranslate nohighlight">\(
+where \)</span>x_1, x_2, …, x_n<span class="math notranslate nohighlight">\( are the input features, \)</span>\theta_0, \theta_1, \theta_2, …, \theta_n<span class="math notranslate nohighlight">\( are the model parameters, and \)</span>h_\theta(x)$ is the predicted output.</p>
+<p>In logistic regression, the hypothesis function is a sigmoid function that maps input features to a binary output value:
+$<span class="math notranslate nohighlight">\( \)</span>$</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -519,6 +572,8 @@ where \)</span>\bar{y}$ is the mean of the output variable.</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-metrics">2.2 Regression Metrics</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-3-model-parameters">Section 3: Model Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-4-hypothesis-function">Section 4: Hypothesis Function</a></li>
 </ul>
   </nav></div>
 
