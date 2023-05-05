@@ -395,17 +395,17 @@ Here’s an example code for installing Scikit-learn and importing it in Python:
 <p>The most commonly used classification metrics are accuracy, precision, recall, and F1-score. Let’s define these metrics mathematically:</p>
 <p><strong>Accuracy</strong> measures the proportion of correct predictions among all predictions. It is defined as:</p>
 <div class="math notranslate nohighlight">
-\[Accuracy = \frac{TP+TN}{TP+TN+FP+FN}\]</div>
+\[ Accuracy = \frac{TP+TN}{TP+TN+FP+FN} \]</div>
 <p>where TP is the number of true positives, TN is the number of true negatives, FP is the number of false positives, and FN is the number of false negatives.</p>
 <p><strong>Precision</strong> measures the proportion of true positives among all positive predictions. It is defined as:</p>
 <div class="math notranslate nohighlight">
-\[Precision = \frac{TP}{TP+FP}\]</div>
+\[ Precision = \frac{TP}{TP+FP} \]</div>
 <p><strong>Recall</strong> measures the proportion of true positives among all actual positives. It is defined as:</p>
 <div class="math notranslate nohighlight">
-\[Recall = \frac{TP}{TP+FN}\]</div>
+\[ Recall = \frac{TP}{TP+FN} \]</div>
 <p><strong>F1-score</strong> is a weighted average of precision and recall, which balances the trade-off between them. It is defined as:</p>
 <div class="math notranslate nohighlight">
-\[F1\text{-}score = 2\times\frac{Precision\times Recall}{Precision+Recall}\]</div>
+\[ F1\text{-}score = 2\times\frac{Precision\times Recall}{Precision+Recall} \]</div>
 <p>We can use Python libraries such as Scikit-learn to compute these evaluation metrics for our classification models. Here’s an example code for computing accuracy, precision, recall, and F1-score for a binary classification model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -427,15 +427,25 @@ Here’s an example code for installing Scikit-learn and importing it in Python:
 <p>Regression is a supervised learning task in which the goal is to predict a continuous output variable given one or more input variables. Examples include house price prediction, stock price prediction, and weather forecasting.</p>
 <p>The most commonly used regression metrics are mean squared error, mean absolute error, and R-squared. Let’s define these metrics mathematically:</p>
 <ul class="simple">
-<li><p>Mean squared error (MSE) measures the average squared difference between the predicted and actual values. It is defined as:
-$<span class="math notranslate nohighlight">\(MSE = \frac{1}{n}\sum_{i=1}^n(y_i - \hat{y}_i)^2\)</span><span class="math notranslate nohighlight">\(
-where \)</span>y_i<span class="math notranslate nohighlight">\( is the actual value, \)</span>\hat{y}_i<span class="math notranslate nohighlight">\( is the predicted value, and \)</span>n$ is the number of data points.</p></li>
-<li><p>Mean absolute error (MAE) measures the average absolute difference between the predicted and actual values. It is defined as:
-$<span class="math notranslate nohighlight">\(MAE= \frac{1}{n}\sum_{i=1}^n|y_i - \hat{y}_i|\)</span>$</p></li>
-<li><p>R-squared (R²) measures the proportion of variance in the output variable that can be explained by the input variables. It is defined as:
-$<span class="math notranslate nohighlight">\(R^2 = 1 - \frac{\sum_{i=1}^n(y_i - \hat{y}_i)^2}{\sum_{i=1}^n(y_i - \bar{y})^2}\)</span><span class="math notranslate nohighlight">\(
-where \)</span>\bar{y}$ is the mean of the output variable.</p></li>
+<li><p>Mean squared error (MSE) measures the average squared difference between the predicted and actual values. It is defined as:</p></li>
+<li></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[ MSE = \frac{1}{n}\sum_{i=1}^n(y_i - \hat{y}_i)^2 \]</div>
+<p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the actual value, <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the predicted value, and <span class="math notranslate nohighlight">\(n\)</span> is the number of data points.</p>
+<ul class="simple">
+<li><p>Mean absolute error (MAE) measures the average absolute difference between the predicted and actual values. It is defined as:</p></li>
+<li></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ MAE= \frac{1}{n}\sum_{i=1}^n|y_i - \hat{y}_i| \]</div>
+<ul class="simple">
+<li><p>R-squared (R²) measures the proportion of variance in the output variable that can be explained by the input variables. It is defined as:</p></li>
+<li></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ R^2 = 1 - \frac{\sum_{i=1}^n(y_i - \hat{y}_i)^2}{\sum_{i=1}^n(y_i - \bar{y})^2} \]</div>
+<p>where <span class="math notranslate nohighlight">\(\bar{y}\)</span> is the mean of the output variable.</p>
 <p>We can use Python libraries such as Scikit-learn to compute these evaluation metrics for our regression models. Here’s an example code for computing mean squared error for a regression model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -453,11 +463,13 @@ where \)</span>\bar{y}$ is the mean of the output variable.</p></li>
 <section id="section-3-model-parameters">
 <h2>Section 3: Model Parameters<a class="headerlink" href="#section-3-model-parameters" title="Permalink to this heading">#</a></h2>
 <p>In supervised machine learning, the goal is to learn a function that maps input features to output labels, based on a set of training examples. This function is typically represented by a model, which has a set of parameters that can be learned from the training data. The model parameters define the shape and behavior of the model, and can be optimized to minimize the error between the predicted output and the actual output.</p>
-<p>For example, in linear regression, the model is represented by a linear equation that maps input features to a continuous output value. The model parameters are the coefficients of the equation, which can be learned from the training data using an optimization algorithm such as gradient descent.
-$<span class="math notranslate nohighlight">\(y = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + ... + \theta_n x_n\)</span><span class="math notranslate nohighlight">\(
-where \)</span>y<span class="math notranslate nohighlight">\( is the predicted output, \)</span>x_1, x_2, …, x_n<span class="math notranslate nohighlight">\( are the input features, \)</span>\theta_0, \theta_1, \theta_2, …, \theta_n<span class="math notranslate nohighlight">\( are the model parameters, and \)</span>n$ is the number of input features.</p>
-<p>In logistic regression, the model is represented by a sigmoid function that maps input features to a binary output value. The model parameters are the coefficients of the sigmoid function, which can be learned from the training data using an optimization algorithm such as gradient descent.
-$<span class="math notranslate nohighlight">\(y = \frac{1}{1 + e^{-(\theta_0 + \theta_1 x_1 + \theta_2 x_2 + ... + \theta_n x_n)}}\)</span>$</p>
+<p>For example, in linear regression, the model is represented by a linear equation that maps input features to a continuous output value. The model parameters are the coefficients of the equation, which can be learned from the training data using an optimization algorithm such as gradient descent.</p>
+<div class="math notranslate nohighlight">
+\[ y = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + ... + \theta_n x_n \]</div>
+<p>where <span class="math notranslate nohighlight">\(y\)</span> is the predicted output, <span class="math notranslate nohighlight">\(x_1, x_2, ..., x_n\)</span> are the input features, <span class="math notranslate nohighlight">\(\theta_0, \theta_1, \theta_2, ..., \theta_n\)</span> are the model parameters, and <span class="math notranslate nohighlight">\(n\)</span> is the number of input features.</p>
+<p>In logistic regression, the model is represented by a sigmoid function that maps input features to a binary output value. The model parameters are the coefficients of the sigmoid function, which can be learned from the training data using an optimization algorithm such as gradient descent.</p>
+<div class="math notranslate nohighlight">
+\[ y = \frac{1}{1 + e^{-(\theta_0 + \theta_1 x_1 + \theta_2 x_2 + ... + \theta_n x_n)}} \]</div>
 <p>where <span class="math notranslate nohighlight">\(y\)</span> is the predicted output, <span class="math notranslate nohighlight">\(x_1, x_2, ..., x_n\)</span> are the input features, <span class="math notranslate nohighlight">\(\theta_0, \theta_1, \theta_2, ..., \theta_n\)</span> are the model parameters, and <span class="math notranslate nohighlight">\(n\)</span> is the number of input features.</p>
 <p>The choice of model and model parameters depends on the specific problem and data at hand. In general, simpler models with fewer parameters are preferred over complex models with many parameters, to avoid overfitting and improve generalization performance. However, in some cases, more complex models may be necessary to capture the underlying complexity of the data.</p>
 <p>In practice, the model parameters are typically initialized with random values, and then optimized using an optimization algorithm such as gradient descent. The optimization algorithm iteratively updates the model parameters in the direction of the negative gradient of the loss function, which measures the error between the predicted output and the actual output.</p>
@@ -495,15 +507,17 @@ $<span class="math notranslate nohighlight">\(y = \frac{1}{1 + e^{-(\theta_0 + \
 <h2>Section 4: Hypothesis Function<a class="headerlink" href="#section-4-hypothesis-function" title="Permalink to this heading">#</a></h2>
 <p>The hypothesis function is a mathematical function that maps input features to output predictions. In supervised learning, the goal is to learn the hypothesis function that best maps the input features to the output labels. The hypothesis function is typically represented by a model, which has a set of parameters that can be learned from data. The parameters are initialized with random values, and the goal is to find the optimal values that minimize the error between the predicted output and the actual output.</p>
 <p>The choice of hypothesis function depends on the specific problem and data at hand. In general, linear models are a popular choice for regression problems, while logistic models are a popular choice for classification problems. However, there are many other types of hypothesis functions that can be used, such as polynomial models, decision trees, neural networks, and support vector machines.</p>
-<p>For example, in linear regression, the hypothesis function is a linear equation that maps input features to a continuous output value:
-$<span class="math notranslate nohighlight">\(h_\theta(x) = \theta_0 + \theta_1x_1 + \theta_2x_2 + ... + \theta_nx_n\)</span><span class="math notranslate nohighlight">\(
-where \)</span>x_1, x_2, …, x_n<span class="math notranslate nohighlight">\( are the input features, \)</span>\theta_0, \theta_1, \theta_2, …, \theta_n<span class="math notranslate nohighlight">\( are the model parameters, and \)</span>h_\theta(x)$ is the predicted output.</p>
-<p>In logistic regression, the hypothesis function is a sigmoid function that maps input features to a binary output value:
-$<span class="math notranslate nohighlight">\(h_\theta(x) = \frac{1}{1 + e^{-\theta^Tx}}\)</span>$</p>
+<p>For example, in linear regression, the hypothesis function is a linear equation that maps input features to a continuous output value:</p>
+<div class="math notranslate nohighlight">
+\[ h_\theta(x) = \theta_0 + \theta_1x_1 + \theta_2x_2 + ... + \theta_nx_n \]</div>
+<p>where <span class="math notranslate nohighlight">\(x_1, x_2, ..., x_n\)</span> are the input features, <span class="math notranslate nohighlight">\(\theta_0, \theta_1, \theta_2, ..., \theta_n\)</span> are the model parameters, and <span class="math notranslate nohighlight">\(h_\theta(x)\)</span> is the predicted output.</p>
+<p>In logistic regression, the hypothesis function is a sigmoid function that maps input features to a binary output value:</p>
+<div class="math notranslate nohighlight">
+\[ h_\theta(x) = \frac{1}{1 + e^{-\theta^Tx}} \]</div>
 <p>where <span class="math notranslate nohighlight">\(x\)</span> is the input features, <span class="math notranslate nohighlight">\(\theta\)</span> is the model parameters, <span class="math notranslate nohighlight">\(h_\theta(x)\)</span> is the predicted output, and <span class="math notranslate nohighlight">\(e\)</span> is the base of the natural logarithm.</p>
 <p>In neural networks, the hypothesis function is a composition of multiple linear and nonlinear transformations, which can be represented by a series of layers. Each layer applies a linear transformation to the input features, followed by a nonlinear activation function such as a sigmoid, ReLU, or tanh.</p>
 <div class="math notranslate nohighlight">
-\[h_\theta(x) = f_3(f_2(f_1(xW_1 + b_1)W_2 + b_2)W_3 + b_3)\]</div>
+\[ h_\theta(x) = f_3(f_2(f_1(xW_1 + b_1)W_2 + b_2)W_3 + b_3) \]</div>
 <p>where <span class="math notranslate nohighlight">\(x\)</span> is the input features, <span class="math notranslate nohighlight">\(W_1, W_2, W_3\)</span> are the weight matrices, <span class="math notranslate nohighlight">\(b_1, b_2, b_3\)</span> are the bias vectors, and <span class="math notranslate nohighlight">\(f_1, f_2, f_3\)</span> are the activation functions.</p>
 <p>The choice of activation function also depends on the specific problem and data at hand. In general, sigmoid and tanh functions are preferred for binary classification problems, while ReLU functions are preferred for regression and multiclass classification problems.</p>
 <p>Here’s an example code for implementing a logistic regression model with a sigmoid hypothesis function in Python:</p>
