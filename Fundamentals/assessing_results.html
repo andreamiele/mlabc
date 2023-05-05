@@ -492,14 +492,14 @@ $<span class="math notranslate nohighlight">\(y = \frac{1}{1 + e^{-(\theta_0 + \
 <p>The hypothesis function is a mathematical function that maps input features to output predictions. In supervised learning, the goal is to learn the hypothesis function that best maps the input features to the output labels. The hypothesis function is typically represented by a model, which has a set of parameters that can be learned from data. The parameters are initialized with random values, and the goal is to find the optimal values that minimize the error between the predicted output and the actual output.</p>
 <p>The choice of hypothesis function depends on the specific problem and data at hand. In general, linear models are a popular choice for regression problems, while logistic models are a popular choice for classification problems. However, there are many other types of hypothesis functions that can be used, such as polynomial models, decision trees, neural networks, and support vector machines.</p>
 <p>For example, in linear regression, the hypothesis function is a linear equation that maps input features to a continuous output value:
-$<span class="math notranslate nohighlight">\( \)</span><span class="math notranslate nohighlight">\(
+$<span class="math notranslate nohighlight">\(h_\theta(x) = \theta_0 + \theta_1x_1 + \theta_2x_2 + ... + \theta_nx_n\)</span><span class="math notranslate nohighlight">\(
 where \)</span>x_1, x_2, …, x_n<span class="math notranslate nohighlight">\( are the input features, \)</span>\theta_0, \theta_1, \theta_2, …, \theta_n<span class="math notranslate nohighlight">\( are the model parameters, and \)</span>h_\theta(x)$ is the predicted output.</p>
 <p>In logistic regression, the hypothesis function is a sigmoid function that maps input features to a binary output value:
-$<span class="math notranslate nohighlight">\( \)</span>$</p>
+$<span class="math notranslate nohighlight">\(h_\theta(x) = \frac{1}{1 + e^{-\theta^Tx}}\)</span>$</p>
 <p>where <span class="math notranslate nohighlight">\(x\)</span> is the input features, <span class="math notranslate nohighlight">\(\theta\)</span> is the model parameters, <span class="math notranslate nohighlight">\(h_\theta(x)\)</span> is the predicted output, and <span class="math notranslate nohighlight">\(e\)</span> is the base of the natural logarithm.</p>
 <p>In neural networks, the hypothesis function is a composition of multiple linear and nonlinear transformations, which can be represented by a series of layers. Each layer applies a linear transformation to the input features, followed by a nonlinear activation function such as a sigmoid, ReLU, or tanh.</p>
 <div class="math notranslate nohighlight">
-\[\]</div>
+\[h_\theta(x) = f_3(f_2(f_1(xW_1 + b_1)W_2 + b_2)W_3 + b_3)\]</div>
 <p>where <span class="math notranslate nohighlight">\(x\)</span> is the input features, <span class="math notranslate nohighlight">\(W_1, W_2, W_3\)</span> are the weight matrices, <span class="math notranslate nohighlight">\(b_1, b_2, b_3\)</span> are the bias vectors, and <span class="math notranslate nohighlight">\(f_1, f_2, f_3\)</span> are the activation functions.</p>
 <p>The choice of activation function also depends on the specific problem and data at hand. In general, sigmoid and tanh functions are preferred for binary classification problems, while ReLU functions are preferred for regression and multiclass classification problems.</p>
 <p>Here’s an example code for implementing a logistic regression model with a sigmoid hypothesis function in Python:</p>
